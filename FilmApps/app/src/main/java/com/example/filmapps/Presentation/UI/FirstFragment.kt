@@ -8,21 +8,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.filmapps.Presentation.Presenters.MyViewModel
-import com.example.filmapps.Presentation.Presenters.MyViewModelFactory
+import com.example.filmapps.Presentation.Presenters.SaveUserDataViewModel
+import com.example.filmapps.Presentation.Presenters.ViewModelFactory
 import com.example.filmapps.R
 import com.example.filmapps.databinding.FragmentFirstBinding
+import com.example.filmapps.domain.di.components.AuthorizationComponent
+import com.example.filmapps.domain.di.components.DaggerAuthorizationComponent
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-    private lateinit var vm: MyViewModel
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private lateinit var vm: SaveUserDataViewModel
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -37,17 +35,16 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val authorizationComponent: AuthorizationComponent = DaggerAuthorizationComponent.create()
 
-        vm = ViewModelProvider(this, MyViewModelFactory()).get(MyViewModel::class.java)
-        binding.button2.setOnClickListener {
-           val login = binding.editTextTextPersonName.text.toString()
-            val pass = binding.editTextTextPassword3.text.toString()
-            if(vm.save(login, pass))
-                Toast.makeText(getActivity(), "Успешная регистрация", Toast.LENGTH_SHORT).show()
-            else
-                Toast.makeText(getActivity(), "Неудачная регистрация", Toast.LENGTH_SHORT).show()
+        vm = ViewModelProvider(this, authorizationComponent.getViewModelFactory()).get(SaveUserDataViewModel::class.java)
+        binding.buttonReg.setOnClickListener {
+            Toast.makeText(getActivity(),
+                vm.save(binding.editTextLogin.text.toString(),
+                    binding.editTextPass.text.toString()),
+                Toast.LENGTH_SHORT).show()
         }
-        binding.buttonFirst.setOnClickListener {
+        binding.buttonNext.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }

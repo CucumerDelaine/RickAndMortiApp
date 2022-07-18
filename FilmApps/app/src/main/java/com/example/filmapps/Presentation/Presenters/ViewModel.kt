@@ -4,10 +4,13 @@ import androidx.lifecycle.ViewModel
 import com.example.filmapps.domain.Entities.SaveUserDataParam
 import com.example.filmapps.domain.UseCase.SaveUserDataUseCase
 
-class MyViewModel(private val saveUserDataUseCase: SaveUserDataUseCase) : ViewModel() {
+class SaveUserDataViewModel(private val saveUserDataUseCase: SaveUserDataUseCase) : ViewModel() {
 
-    fun save(login: String, pass: String): Boolean {
+    fun save(login: String, pass: String): String {
         val param = SaveUserDataParam(login = login, pass = pass)
-        return saveUserDataUseCase.execute(param = param)
+        return if(saveUserDataUseCase.execute(param = param))
+            "Успешная регистрация"
+        else
+            "Неудачная регистрация"
     }
 }
