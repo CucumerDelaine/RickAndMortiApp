@@ -6,22 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.filmapps.Presentation.Presenters.SaveUserDataViewModel
-import com.example.filmapps.Presentation.Presenters.ViewModelFactory
 import com.example.filmapps.R
 import com.example.filmapps.databinding.FragmentFirstBinding
-import com.example.filmapps.domain.di.components.AuthorizationComponent
-import com.example.filmapps.domain.di.components.DaggerAuthorizationComponent
+import dagger.hilt.android.AndroidEntryPoint
 
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
-    private lateinit var vm: SaveUserDataViewModel
-
     private val binding get() = _binding!!
+
+
+    private val vm: SaveUserDataViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -35,14 +34,17 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val authorizationComponent: AuthorizationComponent = DaggerAuthorizationComponent.create()
 
-        vm = ViewModelProvider(this, authorizationComponent.getViewModelFactory()).get(SaveUserDataViewModel::class.java)
+
         binding.buttonReg.setOnClickListener {
-            Toast.makeText(getActivity(),
-                vm.save(binding.editTextLogin.text.toString(),
-                    binding.editTextPass.text.toString()),
-                Toast.LENGTH_SHORT).show()
+            vm.save("123", "1234")
+//            vm.save(binding.editTextLogin.text.toString(),
+//                binding.editTextPass.text.toString())
+//            Toast.makeText(
+//                activity,
+//                vm.save(binding.editTextLogin.text.toString(),
+//                    binding.editTextPass.text.toString()),
+//                Toast.LENGTH_SHORT).show()
         }
         binding.buttonNext.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
