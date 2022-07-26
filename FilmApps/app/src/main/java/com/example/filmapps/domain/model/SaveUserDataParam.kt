@@ -1,5 +1,3 @@
-package com.example.filmapps.domain.Entities
-
-
+package com.example.filmapps.domain.model
 
 class SaveUserDataParam(val login: String, val pass: String)

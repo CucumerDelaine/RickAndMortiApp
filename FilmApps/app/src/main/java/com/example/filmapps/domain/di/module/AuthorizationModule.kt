@@ -1,26 +1,28 @@
 package com.example.filmapps.domain.di.module
 
-import com.example.filmapps.Data.Repositories.UserRepositoriesImpl
-import com.example.filmapps.domain.UseCase.SaveUserDataUseCase
-import com.example.filmapps.domain.repositories.UserRepositories
+import android.content.Context
+import androidx.lifecycle.ViewModel
+import com.example.filmapps.data.repositories.UserRepositoriesImpl
+import com.example.filmapps.domain.useCase.SaveUserDataUseCaseImpl
+import com.example.filmapps.data.repositories.UserRepositories
+import com.example.filmapps.domain.useCase.SaveUserDataUseCase
+import com.example.filmapps.presentation.presenters.SaveUserDataViewModel
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import dagger.multibindings.IntoMap
+
 
 @Module
-@InstallIn(ViewModelComponent::class)
-class AuthorizationModule {
+internal interface AuthorizationModule {
 
-    @Provides
-    fun provideUserRepositories() : UserRepositories {
-        return UserRepositoriesImpl()
-    }
+    @Binds
+    fun provideUserRepositories(userRepositories: UserRepositoriesImpl) : UserRepositories
 
-    @Provides
-    fun provideSaveUserDataUseCase(userRepositories: UserRepositories) : SaveUserDataUseCase {
-        return SaveUserDataUseCase(userRepository = userRepositories)
-    }
+    @Binds
+    fun provideSaveUserDataUseCase(saveUserDataUseCase: SaveUserDataUseCaseImpl) : SaveUserDataUseCase
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SaveUserDataViewModel::class)
+    fun bindViewModel(saveUserDataViewModel: SaveUserDataViewModel): ViewModel
 }
