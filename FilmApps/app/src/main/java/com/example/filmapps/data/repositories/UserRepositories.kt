@@ -1,10 +1,10 @@
 package com.example.filmapps.data.repositories
 
-import com.example.filmapps.domain.model.SaveUserDataParam
+import com.example.filmapps.domain.model.UserDataParam
 
 interface UserRepositories {
 
-    fun saveLoginAndPassword(saveParam: SaveUserDataParam) : Boolean
+    fun saveLoginAndPassword(userParam: UserDataParam)
 
-    //fun getLoginAndPassword()
+    fun getInfoAboutRegisteredOrNot(userParam: UserDataParam) : Boolean
 }

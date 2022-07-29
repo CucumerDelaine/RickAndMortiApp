@@ -1,7 +1,7 @@
-package com.example.filmapps.domain.useCase
+package com.example.filmapps.domain.UseCase
 
 import com.example.filmapps.domain.model.UserDataParam
 
-interface SaveUserDataUseCase {
+interface GetInfoAboutRegisterUseCase {
     fun execute(param: UserDataParam): Boolean
 }

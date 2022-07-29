@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-        router.newRootChain(Screens.Main())
+        router.newRootChain(Screens.RegistrationScreen())
         super.onStart()
     }
 

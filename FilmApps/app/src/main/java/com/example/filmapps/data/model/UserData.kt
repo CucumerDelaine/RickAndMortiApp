@@ -5,13 +5,12 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-class UserData {
-
+data class UserData (
+    @ColumnInfo
+    var login: String,
+    @ColumnInfo
+    var pass: String,
+) {
     @PrimaryKey(autoGenerate = true)
-    var id : Int = 0
-    @ColumnInfo
-    var login: String = ""
-
-    @ColumnInfo
-    var pass: String = ""
+    var id: Int? = null
 }
