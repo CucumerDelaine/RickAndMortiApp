@@ -1,8 +1,8 @@
-package com.example.filmapps.domain.di.module
-
-import dagger.Module
-
-
-@Module
-class FilmListModule {
-}
+//package com.example.filmapps.domain.di.module
+//
+//import dagger.Module
+//
+//
+//@Module
+//class FilmListModule {
+//}

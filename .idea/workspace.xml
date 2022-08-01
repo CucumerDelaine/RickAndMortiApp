@@ -5,8 +5,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc80a474-7220-4c10-83f3-ab9bf6ad3dd2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/deploymentTargetDropDown.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FilmApps/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/androidTest/java/com/example/filmapps/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/androidTest/java/com/example/filmapps/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Data/Repositories/UserRepositoriesImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Data/Repositories/UserRepositoriesImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/Presenters/ViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/Presenters/ViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/UI/FirstFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/UI/FirstFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/UI/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/UI/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/UI/SecondFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/Presentation/UI/SecondFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/Entities/SaveUserDataParam.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/Entities/SaveUserDataParam.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/UseCase/SaveUserDataUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/UseCase/SaveUserDataUseCase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/app/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/app/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/components/AuthorizationComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/components/AuthorizationComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/components/DetailsComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/components/DetailsComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/components/FilmListComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/components/FilmListComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/module/AuthorizationModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/module/AuthorizationModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/module/DetailsModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/module/DetailsModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/module/FilmListModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/di/module/FilmListModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/repositories/UserRepositories.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/java/com/example/filmapps/domain/repositories/UserRepositories.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/drawable/et_style.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/drawable/et_style.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/fragment_first.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/fragment_first.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/fragment_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/layout/fragment_second.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/menu/menu_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/menu/menu_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-land/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-land/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-w1240dp/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-w1240dp/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-w600dp/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values-w600dp/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/xml/backup_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/app/src/test/java/com/example/filmapps/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/app/src/test/java/com/example/filmapps/ExampleUnitTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilmApps/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/FilmApps/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +84,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/FilmApps" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
