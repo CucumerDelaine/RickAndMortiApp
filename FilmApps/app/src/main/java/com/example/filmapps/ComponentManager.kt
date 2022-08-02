@@ -1,8 +1,13 @@
 package com.example.filmapps
 
 import android.content.Context
-import com.example.filmapps.domain.di.components.*
+import com.example.filmapps.domain.di.components.AppComponent
+import com.example.filmapps.domain.di.components.DaggerAppComponent
 import com.example.filmapps.domain.di.module.ContextModule
+import com.example.filmapps.feature.regAndAuth.authorization.domain.di.components.AuthorizationComponent
+import com.example.filmapps.feature.regAndAuth.authorization.domain.di.components.DaggerAuthorizationComponent
+import com.example.filmapps.feature.regAndAuth.registrations.domain.di.components.DaggerRegistrationComponent
+import com.example.filmapps.feature.regAndAuth.registrations.domain.di.components.RegistrationComponent
 
 object ComponentManager {
 
@@ -32,7 +37,7 @@ object ComponentManager {
     }
 
 
-    fun getRegistrationComponent(): RegistrationComponent{
+    fun getRegistrationComponent(): RegistrationComponent {
         return registrationComponent  ?: DaggerRegistrationComponent
             .builder()
             .appComponent(appComponent)

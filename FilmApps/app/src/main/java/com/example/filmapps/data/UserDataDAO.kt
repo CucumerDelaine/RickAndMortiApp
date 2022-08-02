@@ -4,7 +4,7 @@ package com.example.filmapps.data
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.filmapps.data.model.UserData
+import com.example.filmapps.feature.regAndAuth.data.model.UserData
 
 @Dao
 interface UserDataDAO {
