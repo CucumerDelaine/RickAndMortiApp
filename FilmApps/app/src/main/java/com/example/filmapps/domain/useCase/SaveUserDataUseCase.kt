@@ -4,5 +4,5 @@ import com.example.filmapps.Result
 import com.example.filmapps.domain.model.UserDataParam
 
 interface SaveUserDataUseCase {
-   suspend fun execute(param: UserDataParam): Result
+    suspend fun execute(param: UserDataParam): Result
 }
