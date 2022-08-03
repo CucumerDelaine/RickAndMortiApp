@@ -4,7 +4,7 @@ import com.example.filmapps.domain.model.UserDataParam
 
 interface UserRepositories {
 
-    fun saveLoginAndPassword(userParam: UserDataParam)
+    fun save(userParam: UserDataParam)
 
-    fun getInfoAboutRegisteredOrNot(userParam: UserDataParam) : Boolean
+    fun isUserRegistered(userParam: UserDataParam) : Boolean
 }

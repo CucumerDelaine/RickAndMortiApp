@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.Result
 import com.example.filmapps.databinding.FragmentFirstBinding
@@ -22,6 +23,22 @@ class RegistrationFragment : Fragment() {
         ComponentManager.getRegistrationComponent().viewModelsFactory()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        lifecycleScope.launchWhenStarted {
+            vm.mutableState.collect {
+                when (it) {
+                    is Result.Success -> vm.goToAuth()
+                    is Result.Error -> Toast.makeText(activity, it.message, Toast.LENGTH_SHORT)
+                        .show()
+                    else -> {}
+                }
+            }
+        }
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,17 +51,10 @@ class RegistrationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonReg.setOnClickListener {
-            when (val e: Result = vm.registration(
+            vm.registration(
                 binding.editTextLoginReg.text.toString(),
                 binding.editTextPassReg.text.toString()
-            )) {
-                is Result.Success -> {
-                    vm.goToAuth()
-                }
-                is Result.Error -> {
-                    Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
-                }
-            }
+            )
         }
         binding.goToAuth.setOnClickListener {
             vm.goToAuth()

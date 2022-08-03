@@ -9,11 +9,11 @@ import javax.inject.Inject
 internal class UserRepositoriesImpl @Inject constructor(
     private val userData: UserDataDAO
 ) : UserRepositories {
-    override fun saveLoginAndPassword(userParam: UserDataParam) {
+    override fun save(userParam: UserDataParam) {
         userData.insert(userData = UserData(login = userParam.login, pass = userParam.pass))
     }
 
-    override fun getInfoAboutRegisteredOrNot(userParam: UserDataParam): Boolean {
+    override fun isUserRegistered(userParam: UserDataParam): Boolean {
         val user: UserData? = userData.getUserData(login = userParam.login, pass = userParam.pass)
         return user != null
     }

@@ -20,6 +20,7 @@ internal interface RegistrationModule {
     fun provideUserRepositories(userRepositories: UserRepositoriesImpl) : UserRepositories
 
     @Binds
+    @RegistrationScope
     fun provideSaveUserDataUseCase(saveUserDataUseCase: SaveUserDataUseCaseImpl) : SaveUserDataUseCase
 
     @Binds

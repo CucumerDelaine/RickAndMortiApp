@@ -20,6 +20,7 @@ internal interface AuthorizationModule {
     fun provideUserRepositories(userRepositories: UserRepositoriesImpl) : UserRepositories
 
     @Binds
+    @AuthorizationScope
     fun provideGetUserDataUseCase(getInfoAboutRegisterUseCase: GetInfoAboutRegisterUseCaseImpl) : GetInfoAboutRegisterUseCase
 
     @Binds

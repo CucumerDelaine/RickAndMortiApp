@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.Presentation.viewModel.AuthorizationViewModel
 import com.example.filmapps.Result
@@ -22,6 +23,21 @@ class AuthorizationFragment : Fragment() {
         ComponentManager.getAuthorizationComponent().viewModelsFactory()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        lifecycleScope.launchWhenStarted {
+            vm.mutableState.collect {
+                when (it) {
+                    is Result.Success -> vm.goToFilm()
+                    is Result.Error -> Toast.makeText(activity, it.message, Toast.LENGTH_SHORT)
+                        .show()
+                    else -> {}
+                }
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,17 +49,10 @@ class AuthorizationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonAuth.setOnClickListener {
-            when (val e: Result = vm.auth(
+            vm.auth(
                 binding.editTextLoginAuth.text.toString(),
                 binding.editTextPassAuth.text.toString()
-            )) {
-                is Result.Success -> {
-                    vm.goToFilm()
-                }
-                is Result.Error -> {
-                    Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
-                }
-            }
+            )
         }
         binding.backToReg.setOnClickListener {
             vm.goToMain()
