@@ -17,9 +17,9 @@ internal class SaveUserDataUseCaseImpl @Inject constructor(
             withContext(Dispatchers.IO) {
                 try {
                     userRepository.save(userParam = param)
-                    return@withContext Result.Success
+                    Result.Success
                 } catch (e: Throwable) {
-                    return@withContext Result.Error("Error")
+                    Result.Error("Error")
                 }
             }
         }
