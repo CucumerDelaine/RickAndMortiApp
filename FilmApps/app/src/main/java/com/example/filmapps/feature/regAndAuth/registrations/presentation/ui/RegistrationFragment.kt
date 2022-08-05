@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentFirstBinding
-import com.example.filmapps.feature.regAndAuth.Result
+import com.example.filmapps.feature.regAndAuth.presentation.model.Result
 import com.example.filmapps.presentation.presenters.SaveUserDataViewModel
 
 class RegistrationFragment : Fragment() {

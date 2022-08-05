@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmapps.R
 import com.example.filmapps.Screens
-import com.example.filmapps.feature.regAndAuth.Result
+import com.example.filmapps.feature.regAndAuth.presentation.model.Result
 import com.example.filmapps.feature.regAndAuth.domain.model.UserDataParam
 import com.example.filmapps.feature.regAndAuth.registrations.domain.useCase.SaveUserDataUseCase
 import com.github.terrakok.cicerone.Router

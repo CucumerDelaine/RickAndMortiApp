@@ -1,6 +1,6 @@
 package com.example.filmapps.feature.regAndAuth.authorization.domain.useCase
 
-import com.example.filmapps.feature.regAndAuth.Result
+import com.example.filmapps.feature.regAndAuth.presentation.model.Result
 import com.example.filmapps.feature.regAndAuth.data.repositories.UserRepositories
 import com.example.filmapps.feature.regAndAuth.domain.model.UserDataParam
 import kotlinx.coroutines.Dispatchers

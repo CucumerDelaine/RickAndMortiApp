@@ -1,7 +1,7 @@
 package com.example.filmapps.feature.regAndAuth.data.repositories
 
 
-import com.example.filmapps.data.UserDataDAO
+import com.example.filmapps.data.bd.UserDataDAO
 import com.example.filmapps.feature.regAndAuth.data.model.UserData
 import com.example.filmapps.feature.regAndAuth.domain.model.UserDataParam
 import javax.inject.Inject

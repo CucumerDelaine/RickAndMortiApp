@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmapps.R
 import com.example.filmapps.Screens
-import com.example.filmapps.feature.regAndAuth.Result
 import com.example.filmapps.feature.regAndAuth.authorization.domain.useCase.GetInfoAboutRegisterUseCase
 import com.example.filmapps.feature.regAndAuth.domain.model.UserDataParam
+import com.example.filmapps.feature.regAndAuth.presentation.model.Result
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

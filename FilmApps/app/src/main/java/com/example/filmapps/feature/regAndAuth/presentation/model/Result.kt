@@ -1,4 +1,4 @@
-package com.example.filmapps.feature.regAndAuth
+package com.example.filmapps.feature.regAndAuth.presentation.model
 
 sealed class Result {
     object Success : Result()

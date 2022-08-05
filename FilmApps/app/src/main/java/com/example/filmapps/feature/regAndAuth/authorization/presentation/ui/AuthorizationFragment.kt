@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentSecondBinding
-import com.example.filmapps.feature.regAndAuth.Result
 import com.example.filmapps.feature.regAndAuth.authorization.presentation.viewModel.AuthorizationViewModel
+import com.example.filmapps.feature.regAndAuth.presentation.model.Result
 
 class AuthorizationFragment : Fragment() {
 

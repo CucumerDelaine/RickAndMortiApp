@@ -1,7 +1,7 @@
 package com.example.filmapps.domain.di.components
 
 import android.content.Context
-import com.example.filmapps.data.UserDataDAO
+import com.example.filmapps.data.bd.UserDataDAO
 import com.example.filmapps.domain.di.module.ContextModule
 import com.example.filmapps.domain.di.module.DatabaseModule
 import com.example.filmapps.domain.di.module.NavigationModule

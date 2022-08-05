@@ -1,7 +1,7 @@
 package com.example.filmapps.feature.regAndAuth.authorization.domain.di.module
 
 import androidx.lifecycle.ViewModel
-import com.example.filmapps.domain.di.components.AuthorizationScope
+import com.example.filmapps.feature.regAndAuth.authorization.domain.di.scope.AuthorizationScope
 import com.example.filmapps.feature.regAndAuth.authorization.domain.useCase.GetInfoAboutRegisterUseCase
 import com.example.filmapps.feature.regAndAuth.authorization.domain.useCase.GetInfoAboutRegisterUseCaseImpl
 import com.example.filmapps.feature.regAndAuth.authorization.presentation.viewModel.AuthorizationViewModel

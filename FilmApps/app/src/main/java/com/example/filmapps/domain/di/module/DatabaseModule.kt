@@ -2,8 +2,8 @@ package com.example.filmapps.domain.di.module
 
 import android.content.Context
 import androidx.room.Room
-import com.example.filmapps.data.UserDataBase
-import com.example.filmapps.data.UserDataDAO
+import com.example.filmapps.data.bd.UserDataBase
+import com.example.filmapps.data.bd.UserDataDAO
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
