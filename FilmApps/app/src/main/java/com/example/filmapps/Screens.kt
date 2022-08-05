@@ -1,8 +1,8 @@
 package com.example.filmapps
 
 import com.example.filmapps.Presentation.UI.ListFilmFragment
-import com.example.filmapps.presentation.ui.AuthorizationFragment
-import com.example.filmapps.presentation.ui.RegistrationFragment
+import com.example.filmapps.feature.regAndAuth.authorization.presentation.ui.AuthorizationFragment
+import com.example.filmapps.feature.regAndAuth.registrations.presentation.ui.RegistrationFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object Screens {
