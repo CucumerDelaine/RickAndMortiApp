@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
-import com.example.filmapps.databinding.FragmentSecondBinding
+import com.example.filmapps.databinding.FragmentAuthBinding
 import com.example.filmapps.feature.regAndAuth.authorization.presentation.viewModel.AuthorizationViewModel
 import com.example.filmapps.feature.regAndAuth.presentation.model.Result
 
 class AuthorizationFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentAuthBinding? = null
 
     private val binding get() = _binding!!
 
@@ -42,7 +42,7 @@ class AuthorizationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -10,6 +10,7 @@ object ComponentManager {
 
     private var authorizationComponent: AuthorizationComponent? = null
     private var registrationComponent: RegistrationComponent? = null
+    private var filmListComponent: FilmListComponent? = null
 
 
     fun init(context: Context) {
@@ -42,5 +43,17 @@ object ComponentManager {
 
     fun clearRegistrationComponent() {
         registrationComponent = null
+    }
+
+    fun getFilmListComponent(): FilmListComponent{
+        return filmListComponent  ?: DaggerFilmListComponent
+            .builder()
+            .appComponent(appComponent)
+            .build()
+            .also { filmListComponent = it }
+    }
+
+    fun clearFilmListComponent() {
+        filmListComponent = null
     }
 }
