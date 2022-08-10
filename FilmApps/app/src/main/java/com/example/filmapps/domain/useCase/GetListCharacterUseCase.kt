@@ -1,7 +1,7 @@
 package com.example.filmapps.domain.useCase
 
-import com.example.filmapps.presentation.model.Request
+import com.example.filmapps.presentation.model.CharacterListResponce
 
 interface GetListCharacterUseCase {
-    suspend fun execute(): Request
+    suspend fun execute(): CharacterListResponce
 }

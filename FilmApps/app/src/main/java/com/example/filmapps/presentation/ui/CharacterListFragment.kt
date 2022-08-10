@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
-import com.example.filmapps.presentation.model.Request
+import com.example.filmapps.presentation.model.CharacterList
+import com.example.filmapps.presentation.model.CharacterListResponce
 import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
 
 
@@ -29,13 +31,17 @@ class CharacterListFragment : Fragment() {
         super.onStart()
 
         val recyclerView: RecyclerView = binding.list
+        val progressBar: ProgressBar = binding.progressBar
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
                 when (it) {
-                    is Request.Success -> recyclerView.adapter = CharacterListRecycleViewAdapter(it.value?.results)
-                    is Request.Error -> Toast.makeText(activity, it.message.toString(), Toast.LENGTH_SHORT)
+                    is CharacterList.Success -> {
+                        recyclerView.adapter = CharacterListRecycleViewAdapter(it.value)
+                        progressBar.visibility = ProgressBar.INVISIBLE
+                    }
+                    is CharacterList.Error -> Toast.makeText(activity, it.message.toString(), Toast.LENGTH_SHORT)
                         .show()
-                    else -> {}
+                    is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
                 }
             }
         }
