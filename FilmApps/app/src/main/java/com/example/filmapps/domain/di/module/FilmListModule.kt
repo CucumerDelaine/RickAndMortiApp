@@ -3,6 +3,7 @@ package com.example.filmapps.domain.di.module
 import androidx.lifecycle.ViewModel
 import com.example.filmapps.data.repository.RetrofitRepository
 import com.example.filmapps.data.repository.RetrofitRepositoryImpl
+import com.example.filmapps.data.retrofit.GetPage
 import com.example.filmapps.domain.di.scope.CharacterListScope
 import com.example.filmapps.domain.useCase.GetListCharacterUseCase
 import com.example.filmapps.domain.useCase.GetListCharacterUseCaseImpl
@@ -10,7 +11,9 @@ import com.example.filmapps.feature.regAndAuth.domain.di.module.ViewModelKey
 import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
+import retrofit2.Retrofit
 
 
 @Module
