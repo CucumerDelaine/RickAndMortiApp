@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.presentation.model.CharacterList
@@ -27,26 +28,8 @@ class CharacterListFragment : Fragment() {
         ComponentManager.getFilmListComponent().viewModelsFactory()
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val recyclerView: RecyclerView = binding.list
-        val progressBar: ProgressBar = binding.progressBar
-        lifecycleScope.launchWhenStarted {
-            vm.mutableState.collect {
-                when (it) {
-                    is CharacterList.Success -> {
-                        recyclerView.adapter = CharacterListRecycleViewAdapter(it.value)
-                        progressBar.visibility = ProgressBar.INVISIBLE
-                    }
-                    is CharacterList.Error -> Toast.makeText(activity, it.message.toString(), Toast.LENGTH_SHORT)
-                        .show()
-                    is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
-                }
-            }
-        }
-    }
-
+    private var status: Boolean = true
+    private val adapter = CharacterListRecycleViewAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +44,42 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val recyclerView: RecyclerView = binding.list
+        val progressBar: ProgressBar = binding.progressBar
+        recyclerView.adapter = adapter
+        lifecycleScope.launchWhenStarted {
+            vm.mutableState.collect {
+                when (it) {
+                    is CharacterList.Success -> {
+                        adapter.setData(it.value)
+                        progressBar.visibility = ProgressBar.INVISIBLE
+                    }
+                    is CharacterList.Error -> Toast.makeText(
+                        activity,
+                        it.message,
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                    is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
+                    is CharacterList.Finally -> status = false
+                }
+            }
+        }
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0) {
+                    val layoutManager = recyclerView.layoutManager as GridLayoutManager
+                    val visibleItemCount = layoutManager.findLastCompletelyVisibleItemPosition() + 1
+                    if (visibleItemCount == layoutManager.itemCount && status) {
+                        vm.getCharacterList()
+                        progressBar.visibility = ProgressBar.VISIBLE
+                    }
+                }
+            }
+        })
+
         vm.getCharacterList()
     }
 

@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import coil.load
-import com.example.filmapps.data.model.Results
 import com.example.filmapps.databinding.FragmentCharacterListBinding
-import com.example.filmapps.presentation.viewModel.Character
 
-class CharacterListRecycleViewAdapter(
-    private val values: MutableList<Character>
-) : RecyclerView.Adapter<CharacterListRecycleViewAdapter.ViewHolder>() {
+class CharacterListRecycleViewAdapter() :
+    RecyclerView.Adapter<CharacterListRecycleViewAdapter.ViewHolder>() {
+
+    private val values: MutableList<com.example.filmapps.presentation.model.Character> =
+        mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -26,7 +26,7 @@ class CharacterListRecycleViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values.get(position)
+        val item = values[position]
         holder.idView.load(item.img)
     }
 
@@ -34,7 +34,14 @@ class CharacterListRecycleViewAdapter(
         return values.size
     }
 
-    inner class ViewHolder(binding: FragmentCharacterListBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun setData(characterList: List<com.example.filmapps.presentation.model.Character>) {
+        values.clear()
+        values.addAll(characterList)
+        notifyDataSetChanged()
+    }
+
+    inner class ViewHolder(binding: FragmentCharacterListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         val idView: ImageView = binding.image
     }
 
