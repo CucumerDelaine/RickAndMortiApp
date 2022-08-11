@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
 
 
-open class PaginationScrollListener(private val vm: ListCharacterViewModel, private val status: Boolean, private val progressBar: ProgressBar): RecyclerView.OnScrollListener() {
+class PaginationScrollListener(private val vm: ListCharacterViewModel, private val status: Boolean, private val progressBar: ProgressBar): RecyclerView.OnScrollListener() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)

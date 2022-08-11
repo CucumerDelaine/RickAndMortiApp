@@ -64,7 +64,7 @@ class CharacterListFragment : Fragment() {
                 }
             }
         }
-        recyclerView.addOnScrollListener(object : PaginationScrollListener(vm, status, progressBar){})
+        recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
         vm.getCharacterList()
     }
 
