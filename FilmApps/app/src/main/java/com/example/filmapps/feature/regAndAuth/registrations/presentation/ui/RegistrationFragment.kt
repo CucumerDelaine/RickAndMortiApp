@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
-import com.example.filmapps.databinding.FragmentFirstBinding
+import com.example.filmapps.databinding.FragmentRegistrationBinding
 import com.example.filmapps.feature.regAndAuth.presentation.model.Result
 import com.example.filmapps.presentation.presenters.SaveUserDataViewModel
 
 class RegistrationFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentRegistrationBinding? = null
 
     private val binding get() = _binding!!
 
@@ -44,7 +44,7 @@ class RegistrationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
         return binding.root
     }
 
