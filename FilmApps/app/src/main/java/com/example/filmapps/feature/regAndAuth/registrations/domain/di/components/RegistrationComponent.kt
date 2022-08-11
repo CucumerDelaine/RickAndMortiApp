@@ -1,4 +1,4 @@
-package com.example.filmapps.domain.di.components
+package com.example.filmapps.di.components
 
 import com.example.filmapps.feature.regAndAuth.presentation.viewModel.ViewModelFactory
 import com.example.filmapps.feature.regAndAuth.registrations.domain.di.module.RegistrationModule

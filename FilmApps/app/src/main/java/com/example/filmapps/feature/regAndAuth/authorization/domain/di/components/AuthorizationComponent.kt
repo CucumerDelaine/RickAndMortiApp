@@ -1,4 +1,4 @@
-package com.example.filmapps.domain.di.components
+package com.example.filmapps.di.components
 
 import com.example.filmapps.feature.regAndAuth.authorization.domain.di.module.AuthorizationModule
 import com.example.filmapps.feature.regAndAuth.authorization.domain.di.scope.AuthorizationScope

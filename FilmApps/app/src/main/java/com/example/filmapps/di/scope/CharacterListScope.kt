@@ -1,4 +1,4 @@
-package com.example.filmapps.domain.di.scope
+package com.example.filmapps.di.scope
 
 import javax.inject.Scope
 

@@ -1,11 +1,11 @@
-package com.example.filmapps.domain.di.components
+package com.example.filmapps.di.components
 
 import android.content.Context
 import com.example.filmapps.data.bd.UserDataDAO
-import com.example.filmapps.domain.di.module.ContextModule
-import com.example.filmapps.domain.di.module.DatabaseModule
-import com.example.filmapps.domain.di.module.NavigationModule
-import com.example.filmapps.domain.di.module.NetworkModule
+import com.example.filmapps.di.module.ContextModule
+import com.example.filmapps.di.module.DatabaseModule
+import com.example.filmapps.di.module.NavigationModule
+import com.example.filmapps.di.module.NetworkModule
 import com.example.filmapps.presentation.ui.MainActivity
 import com.github.terrakok.cicerone.Router
 import dagger.Component

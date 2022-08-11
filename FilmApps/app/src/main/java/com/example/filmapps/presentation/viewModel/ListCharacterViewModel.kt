@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmapps.data.model.Results
 import com.example.filmapps.domain.useCase.GetListCharacterUseCase
+import com.example.filmapps.presentation.model.Character
 import com.example.filmapps.presentation.model.CharacterList
 import com.example.filmapps.presentation.model.CharacterListResponce
 import com.github.terrakok.cicerone.Router
@@ -36,7 +37,7 @@ class ListCharacterViewModel @Inject constructor(
                 is CharacterListResponce.Loading -> {
                     _mutableState.emit(CharacterList.Loading)
                 }
-                is CharacterListResponce.Finaly -> CharacterList.Finaly
+                is CharacterListResponce.Finally -> CharacterList.Finaly
             }
         }
     }
@@ -50,5 +51,3 @@ class ListCharacterViewModel @Inject constructor(
         return list
     }
 }
-
-data class Character(val id: Int?, val img: String?)

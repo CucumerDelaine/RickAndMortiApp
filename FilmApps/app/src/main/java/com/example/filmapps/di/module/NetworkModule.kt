@@ -1,6 +1,5 @@
-package com.example.filmapps.domain.di.module
+package com.example.filmapps.di.module
 
-import com.example.filmapps.domain.di.scope.CharacterListScope
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

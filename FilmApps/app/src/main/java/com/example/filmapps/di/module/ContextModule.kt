@@ -1,4 +1,4 @@
-package com.example.filmapps.domain.di.module
+package com.example.filmapps.di.module
 
 import android.content.Context
 import dagger.Module

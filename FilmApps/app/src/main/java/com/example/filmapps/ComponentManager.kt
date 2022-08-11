@@ -1,8 +1,8 @@
 package com.example.filmapps
 
 import android.content.Context
-import com.example.filmapps.domain.di.components.*
-import com.example.filmapps.domain.di.module.ContextModule
+import com.example.filmapps.di.components.*
+import com.example.filmapps.di.module.ContextModule
 
 object ComponentManager {
 
