@@ -10,11 +10,9 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.presentation.model.CharacterList
-import com.example.filmapps.presentation.model.CharacterListResponce
 import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
 
 
@@ -66,20 +64,7 @@ class CharacterListFragment : Fragment() {
                 }
             }
         }
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (dy > 0) {
-                    val layoutManager = recyclerView.layoutManager as GridLayoutManager
-                    val visibleItemCount = layoutManager.findLastCompletelyVisibleItemPosition() + 1
-                    if (visibleItemCount == layoutManager.itemCount && status) {
-                        vm.getCharacterList()
-                        progressBar.visibility = ProgressBar.VISIBLE
-                    }
-                }
-            }
-        })
-
+        recyclerView.addOnScrollListener(object : PaginationScrollListener(vm, status, progressBar){})
         vm.getCharacterList()
     }
 

@@ -1,16 +1,17 @@
 package com.example.filmapps.presentation.ui
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.filmapps.databinding.FragmentCharacterListBinding
+import com.example.filmapps.presentation.model.Character
 
 class CharacterListRecycleViewAdapter() :
     RecyclerView.Adapter<CharacterListRecycleViewAdapter.ViewHolder>() {
 
-    private val values: MutableList<com.example.filmapps.presentation.model.Character> =
+    private val values: MutableList<Character> =
         mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,7 +35,7 @@ class CharacterListRecycleViewAdapter() :
         return values.size
     }
 
-    fun setData(characterList: List<com.example.filmapps.presentation.model.Character>) {
+    fun setData(characterList: List<Character>) {
         values.clear()
         values.addAll(characterList)
         notifyDataSetChanged()
