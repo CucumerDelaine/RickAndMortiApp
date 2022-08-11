@@ -37,7 +37,7 @@ class ListCharacterViewModel @Inject constructor(
                 is CharacterListResponce.Loading -> {
                     _mutableState.emit(CharacterList.Loading)
                 }
-                is CharacterListResponce.Finally -> CharacterList.Finaly
+                is CharacterListResponce.Finally -> CharacterList.Finally
             }
         }
     }

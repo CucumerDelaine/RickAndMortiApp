@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import coil.load
-import com.example.filmapps.data.model.Results
 import com.example.filmapps.databinding.FragmentCharacterListBinding
-import com.example.filmapps.presentation.viewModel.Character
+import com.example.filmapps.presentation.model.Character
 
 class CharacterListRecycleViewAdapter() : RecyclerView.Adapter<CharacterListRecycleViewAdapter.ViewHolder>() {
 
     private val values: MutableList<Character> = mutableListOf<Character>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(

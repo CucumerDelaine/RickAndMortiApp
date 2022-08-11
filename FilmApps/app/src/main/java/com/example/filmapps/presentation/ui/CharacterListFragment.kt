@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.presentation.model.CharacterList
-import com.example.filmapps.presentation.model.CharacterListResponce
 import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
 
 
@@ -57,7 +56,7 @@ class CharacterListFragment : Fragment() {
                     is CharacterList.Error -> Toast.makeText(activity, it.message, Toast.LENGTH_SHORT)
                         .show()
                     is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
-                    is CharacterList.Finaly -> status = false
+                    is CharacterList.Finally -> status = false
                 }
             }
         }
