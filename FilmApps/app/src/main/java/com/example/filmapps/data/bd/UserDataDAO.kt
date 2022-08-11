@@ -9,7 +9,7 @@ import com.example.filmapps.feature.regAndAuth.data.model.UserData
 @Dao
 interface UserDataDAO {
     @Query("SELECT * FROM UserData WHERE login = :login and pass = :pass")
-    fun getUserData(login: String, pass: String) : UserData?
+    fun getUserData(login: String, pass: String): UserData?
 
     @Insert
     fun insert(userData: UserData)

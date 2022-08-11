@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.presentation.model.CharacterList
-import com.example.filmapps.presentation.model.CharacterListResponce
 import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
 
 
@@ -27,26 +26,8 @@ class CharacterListFragment : Fragment() {
         ComponentManager.getFilmListComponent().viewModelsFactory()
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val recyclerView: RecyclerView = binding.list
-        val progressBar: ProgressBar = binding.progressBar
-        lifecycleScope.launchWhenStarted {
-            vm.mutableState.collect {
-                when (it) {
-                    is CharacterList.Success -> {
-                        recyclerView.adapter = CharacterListRecycleViewAdapter(it.value)
-                        progressBar.visibility = ProgressBar.INVISIBLE
-                    }
-                    is CharacterList.Error -> Toast.makeText(activity, it.message.toString(), Toast.LENGTH_SHORT)
-                        .show()
-                    is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
-                }
-            }
-        }
-    }
-
+    private var status: Boolean = true
+    private val adapter = CharacterListRecycleViewAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +42,29 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val recyclerView: RecyclerView = binding.list
+        val progressBar: ProgressBar = binding.progressBar
+        recyclerView.adapter = adapter
+        lifecycleScope.launchWhenStarted {
+            vm.mutableState.collect {
+                when (it) {
+                    is CharacterList.Success -> {
+                        adapter.setData(it.value)
+                        progressBar.visibility = ProgressBar.INVISIBLE
+                    }
+                    is CharacterList.Error -> Toast.makeText(
+                        activity,
+                        it.message,
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                    is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
+                    is CharacterList.Finally -> status = false
+                }
+            }
+        }
+        recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
         vm.getCharacterList()
     }
 

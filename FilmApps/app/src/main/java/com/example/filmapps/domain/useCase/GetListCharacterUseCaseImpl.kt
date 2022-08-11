@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class GetListCharacterUseCaseImpl @Inject constructor(
     private val retrofitRepository: RetrofitRepository
-): GetListCharacterUseCase {
+) : GetListCharacterUseCase {
     override suspend fun execute(): CharacterListResponce {
         return retrofitRepository.loadList()
     }

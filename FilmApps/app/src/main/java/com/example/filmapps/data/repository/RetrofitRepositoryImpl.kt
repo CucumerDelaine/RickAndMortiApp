@@ -7,13 +7,17 @@ import javax.inject.Inject
 
 class RetrofitRepositoryImpl @Inject constructor(
     private val retrofit: GetPage
-): RetrofitRepository {
+) : RetrofitRepository {
+    var page = 0
+    private val lastPage = 42
 
     override suspend fun loadList(): CharacterListResponce {
+        page++
+        if (page == lastPage + 1)
+            return CharacterListResponce.Finally
         return try {
-            CharacterListResponce.Success(retrofit.getPage())
-        }
-        catch (e: Exception) {
+            CharacterListResponce.Success(retrofit.getPage(page))
+        } catch (e: Exception) {
             CharacterListResponce.Error(e)
         }
     }
