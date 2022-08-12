@@ -1,7 +1,9 @@
 package com.example.filmapps.presentation.viewModel
 
+import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.filmapps.Screens
 import com.example.filmapps.data.model.Results
 import com.example.filmapps.domain.useCase.GetListCharacterUseCase
 import com.example.filmapps.presentation.model.Character
@@ -25,6 +27,12 @@ class ListCharacterViewModel @Inject constructor(
     val mutableState: StateFlow<CharacterList> = _mutableState
     private val list: MutableList<Character> = ArrayList()
 
+    fun goToDetails(character: Character?){
+        if(character != null)
+            router.newChain(Screens.Details(character))
+    }
+
+
     fun getCharacterList() {
         viewModelScope.launch(Dispatchers.IO) {
             when (val it = getListCharacterUseCase.execute()) {
@@ -47,7 +55,7 @@ class ListCharacterViewModel @Inject constructor(
         val list: MutableList<Character> = ArrayList()
         if (values != null) {
             for (it in values)
-                list.add(Character(it.id, it.image))
+                list.add(Character(it.id.toString(), it.image))
         }
         return list
     }
