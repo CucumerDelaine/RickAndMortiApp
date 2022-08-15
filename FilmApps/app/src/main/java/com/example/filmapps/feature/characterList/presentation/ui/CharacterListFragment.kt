@@ -24,7 +24,7 @@ class CharacterListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val vm by viewModels<ListCharacterViewModel> {
-        ComponentManager.getFilmListComponent().viewModelsFactory()
+        ComponentManager.getCharacterListComponent().viewModelsFactory()
     }
 
     private var status: Boolean = true
