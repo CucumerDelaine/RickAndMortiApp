@@ -1,20 +1,20 @@
-package com.example.filmapps.di.module
+package com.example.filmapps.feature.characterList.di.module
 
 import androidx.lifecycle.ViewModel
-import com.example.filmapps.data.repository.RetrofitRepository
-import com.example.filmapps.data.repository.RetrofitRepositoryImpl
-import com.example.filmapps.di.scope.CharacterListScope
-import com.example.filmapps.domain.useCase.GetListCharacterUseCase
-import com.example.filmapps.domain.useCase.GetListCharacterUseCaseImpl
+import com.example.filmapps.feature.characterList.data.repository.RetrofitRepository
+import com.example.filmapps.feature.characterList.data.repository.RetrofitRepositoryImpl
+import com.example.filmapps.feature.characterList.di.scope.CharacterListScope
+import com.example.filmapps.feature.characterList.domain.useCase.GetListCharacterUseCase
+import com.example.filmapps.feature.characterList.domain.useCase.GetListCharacterUseCaseImpl
 import com.example.filmapps.feature.regAndAuth.di.module.ViewModelKey
-import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
+import com.example.filmapps.feature.characterList.presentation.viewModel.ListCharacterViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
 
 @Module
-internal interface FilmListModule {
+internal interface CharacterListModule {
 
     @Binds
     @CharacterListScope

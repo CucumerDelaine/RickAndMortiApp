@@ -1,14 +1,13 @@
-package com.example.filmapps.presentation.viewModel
+package com.example.filmapps.feature.characterList.presentation.viewModel
 
-import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmapps.Screens
-import com.example.filmapps.data.model.Results
-import com.example.filmapps.domain.useCase.GetListCharacterUseCase
-import com.example.filmapps.presentation.model.Character
-import com.example.filmapps.presentation.model.CharacterList
-import com.example.filmapps.presentation.model.CharacterListResponce
+import com.example.filmapps.feature.characterList.data.model.Results
+import com.example.filmapps.feature.characterList.domain.useCase.GetListCharacterUseCase
+import com.example.filmapps.feature.characterList.presentation.model.Character
+import com.example.filmapps.feature.characterList.presentation.model.CharacterList
+import com.example.filmapps.feature.characterList.presentation.model.CharacterListResponce
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -27,8 +26,8 @@ class ListCharacterViewModel @Inject constructor(
     val mutableState: StateFlow<CharacterList> = _mutableState
     private val list: MutableList<Character> = ArrayList()
 
-    fun goToDetails(character: Character?){
-        if(character != null)
+    fun goToDetails(character: Character?) {
+        if (character != null)
             router.newChain(Screens.Details(character))
     }
 

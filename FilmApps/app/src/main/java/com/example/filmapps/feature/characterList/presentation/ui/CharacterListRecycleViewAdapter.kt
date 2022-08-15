@@ -1,4 +1,4 @@
-package com.example.filmapps.presentation.ui
+package com.example.filmapps.feature.characterList.presentation.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.filmapps.databinding.FragmentCharacterListBinding
-import com.example.filmapps.presentation.model.Character
+import com.example.filmapps.feature.characterList.presentation.model.Character
 
 
 class CharacterListRecycleViewAdapter(private val onClickListener: OnCharacterClickListener) :
