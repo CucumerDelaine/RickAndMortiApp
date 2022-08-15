@@ -8,7 +8,8 @@ import coil.load
 import com.example.filmapps.databinding.FragmentCharacterListBinding
 import com.example.filmapps.presentation.model.Character
 
-class CharacterListRecycleViewAdapter() :
+
+class CharacterListRecycleViewAdapter(private val onClickListener: OnCharacterClickListener) :
     RecyclerView.Adapter<CharacterListRecycleViewAdapter.ViewHolder>() {
 
     private val values: MutableList<Character> =
@@ -29,6 +30,8 @@ class CharacterListRecycleViewAdapter() :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.idView.load(item.img)
+
+        holder.itemView.setOnClickListener { onClickListener.onCharacterClick(item, position) }
     }
 
     override fun getItemCount(): Int {
@@ -46,4 +49,7 @@ class CharacterListRecycleViewAdapter() :
         val idView: ImageView = binding.image
     }
 
+    interface OnCharacterClickListener {
+        fun onCharacterClick(character: Character, position: Int)
+    }
 }
