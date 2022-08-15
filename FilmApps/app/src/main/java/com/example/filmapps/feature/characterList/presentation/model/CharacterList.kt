@@ -1,4 +1,4 @@
-package com.example.filmapps.presentation.model
+package com.example.filmapps.feature.characterList.presentation.model
 
 
 sealed class CharacterList {

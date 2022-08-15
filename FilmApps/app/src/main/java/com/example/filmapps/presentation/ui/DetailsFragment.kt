@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.filmapps.R
-import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.databinding.FragmentDetailsBinding
-import com.example.filmapps.presentation.model.Character
+import com.example.filmapps.feature.characterList.presentation.model.Character
 
 
 class DetailsFragment(private val character: Character) : Fragment() {

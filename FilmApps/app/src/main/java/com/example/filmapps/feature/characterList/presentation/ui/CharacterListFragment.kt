@@ -1,4 +1,4 @@
-package com.example.filmapps.presentation.ui
+package com.example.filmapps.feature.characterList.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,9 +12,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
-import com.example.filmapps.presentation.model.Character
-import com.example.filmapps.presentation.model.CharacterList
-import com.example.filmapps.presentation.viewModel.ListCharacterViewModel
+import com.example.filmapps.feature.characterList.presentation.model.Character
+import com.example.filmapps.feature.characterList.presentation.model.CharacterList
+import com.example.filmapps.feature.characterList.presentation.viewModel.ListCharacterViewModel
 
 
 class CharacterListFragment : Fragment() {

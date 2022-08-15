@@ -3,6 +3,8 @@ package com.example.filmapps
 import android.content.Context
 import com.example.filmapps.di.components.*
 import com.example.filmapps.di.module.ContextModule
+import com.example.filmapps.feature.characterList.di.components.CharacterListComponent
+import com.example.filmapps.feature.characterList.di.components.DaggerCharacterListComponent
 
 object ComponentManager {
 
@@ -10,7 +12,7 @@ object ComponentManager {
 
     private var authorizationComponent: AuthorizationComponent? = null
     private var registrationComponent: RegistrationComponent? = null
-    private var filmListComponent: FilmListComponent? = null
+    private var characterListComponent: CharacterListComponent? = null
 
 
     fun init(context: Context) {
@@ -45,15 +47,15 @@ object ComponentManager {
         registrationComponent = null
     }
 
-    fun getFilmListComponent(): FilmListComponent{
-        return filmListComponent  ?: DaggerFilmListComponent
+    fun getFilmListComponent(): CharacterListComponent {
+        return characterListComponent  ?: DaggerCharacterListComponent
             .builder()
             .appComponent(appComponent)
             .build()
-            .also { filmListComponent = it }
+            .also { characterListComponent = it }
     }
 
-    fun clearFilmListComponent() {
-        filmListComponent = null
+    fun characterListComponent() {
+        characterListComponent = null
     }
 }
