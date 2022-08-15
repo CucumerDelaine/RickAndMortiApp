@@ -2,11 +2,10 @@ package com.example.filmapps.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.filmapps.data.model.ResultCharacterApi
+import com.example.filmapps.presentation.ui.CharacterConverter
 import com.example.filmapps.domain.useCase.GetCharacterDetailsUseCase
 import com.example.filmapps.presentation.model.CharacterDetails
 import com.example.filmapps.presentation.model.CharacterDetailsResponce
-import com.example.filmapps.presentation.model.ConvertCharacterDetails
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +13,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CharacterDetailsViewModel @Inject constructor(
-    private val getCharacterDetailsUseCase: GetCharacterDetailsUseCase
+    private val getCharacterDetailsUseCase: GetCharacterDetailsUseCase,
+    private val characterConverter: CharacterConverter
 ) : ViewModel() {
 
     private val _mutableState: MutableStateFlow<CharacterDetails> =
@@ -26,7 +26,7 @@ class CharacterDetailsViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             when (val it = getCharacterDetailsUseCase.execute(id)) {
                 is CharacterDetailsResponce.Success -> {
-                    _mutableState.emit(converter(it.value))
+                    _mutableState.emit(CharacterDetails.Success(characterConverter.converter(it.value)))
                 }
                 is CharacterDetailsResponce.Error -> {
                     _mutableState.emit(CharacterDetails.Error(it.message.toString()))
@@ -36,21 +36,5 @@ class CharacterDetailsViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    private fun converter(values: ResultCharacterApi?): CharacterDetails {
-        return if (values != null) {
-            val character: ConvertCharacterDetails = ConvertCharacterDetails(
-                values.name,
-                values.status,
-                values.species,
-                values.gender,
-                values.origin?.name,
-                values.location?.name,
-                values.image
-            )
-            CharacterDetails.Success(character)
-        } else
-            CharacterDetails.Error("Пустое поле")
     }
 }

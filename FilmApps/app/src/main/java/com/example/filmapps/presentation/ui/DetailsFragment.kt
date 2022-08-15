@@ -40,19 +40,18 @@ class DetailsFragment(private val character: Character) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val progressBar: ProgressBar = binding.progressBar2
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
                 when (it) {
                     is CharacterDetails.Success -> {
-                        binding.imageView.load(it.value?.image)
-                        binding.textView.text = it.value?._name
-                        binding.textView2.text= it.value?._status
-                        binding.textView3.text= it.value?._species
-                        binding.textView5.text= it.value?._gender
-                        binding.textView6.text= it.value?._origin
-                        binding.textView7.text= it.value?._location
-                        progressBar.visibility = ProgressBar.INVISIBLE
+                        binding.imageCharacter.load(it.value?.image)
+                        binding.textName.text = it.value?.name
+                        binding.textStatus.text = it.value?.status
+                        binding.textSpecies.text = it.value?.species
+                        binding.textGender.text = it.value?.gender
+                        binding.textOrigin.text = it.value?.origin
+                        binding.textLocation.text = it.value?.location
+                        binding.progressBarCharacterDetails.visibility = ProgressBar.INVISIBLE
                     }
                     is CharacterDetails.Error -> Toast.makeText(
                         activity,
@@ -60,7 +59,8 @@ class DetailsFragment(private val character: Character) : Fragment() {
                         Toast.LENGTH_SHORT
                     )
                         .show()
-                    is CharacterDetails.Loading -> progressBar.visibility = ProgressBar.VISIBLE
+                    is CharacterDetails.Loading -> binding.progressBarCharacterDetails.visibility =
+                        ProgressBar.VISIBLE
                 }
             }
         }
