@@ -17,7 +17,7 @@
         tools:listitem="@layout/fragment_character_list" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBarCharacterList"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

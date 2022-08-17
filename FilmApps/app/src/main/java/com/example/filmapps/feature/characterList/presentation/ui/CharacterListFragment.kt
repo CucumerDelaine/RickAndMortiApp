@@ -24,7 +24,7 @@ class CharacterListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val vm by viewModels<ListCharacterViewModel> {
-        ComponentManager.getFilmListComponent().viewModelsFactory()
+        ComponentManager.getCharacterListComponent().viewModelsFactory()
     }
 
     private var status: Boolean = true
@@ -52,7 +52,7 @@ class CharacterListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView: RecyclerView = binding.list
-        val progressBar: ProgressBar = binding.progressBar
+        val progressBar: ProgressBar = binding.progressBarCharacterList
         recyclerView.adapter = adapter
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
