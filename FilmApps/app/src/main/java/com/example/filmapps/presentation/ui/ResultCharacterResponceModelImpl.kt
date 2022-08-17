@@ -3,13 +3,13 @@ package com.example.filmapps.presentation.ui
 import android.content.Context
 import com.example.filmapps.R
 import com.example.filmapps.data.model.ResultCharacterApi
-import com.example.filmapps.presentation.model.UICharacterDetails
+import com.example.filmapps.presentation.model.CharacterDetailsUIModel
 import javax.inject.Inject
 
-internal class CharacterConverterImpl @Inject constructor(
+internal class ResultCharacterResponceModelImpl @Inject constructor(
     private val context: Context
-): CharacterConverter {
-    override fun converter(values: ResultCharacterApi?): UICharacterDetails = UICharacterDetails(
+): ResultCharacterResponceModel {
+    override fun converter(values: ResultCharacterApi?): CharacterDetailsUIModel = CharacterDetailsUIModel(
         "${context.getString(R.string.name)} ${values?.name}",
         "${context.getString(R.string.status)} ${values?.status}",
         "${context.getString(R.string.species)} ${values?.species}",

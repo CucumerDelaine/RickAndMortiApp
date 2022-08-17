@@ -1,6 +1,6 @@
 package com.example.filmapps.presentation.model
 
-data class UICharacterDetails(
+data class CharacterDetailsUIModel(
     val name: String?,
     var status: String?,
     var species: String?,

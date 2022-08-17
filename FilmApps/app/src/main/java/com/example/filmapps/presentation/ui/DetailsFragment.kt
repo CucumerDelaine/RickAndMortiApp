@@ -13,7 +13,7 @@ import coil.load
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentDetailsBinding
 import com.example.filmapps.feature.characterList.presentation.model.Character
-import com.example.filmapps.presentation.model.CharacterDetails
+import com.example.filmapps.presentation.model.CharacterDetailsResult
 import com.example.filmapps.presentation.viewModel.CharacterDetailsViewModel
 
 
@@ -43,7 +43,7 @@ class DetailsFragment(private val character: Character) : Fragment() {
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
                 when (it) {
-                    is CharacterDetails.Success -> {
+                    is CharacterDetailsResult.Success -> {
                         binding.imageCharacter.load(it.value?.image)
                         binding.textName.text = it.value?.name
                         binding.textStatus.text = it.value?.status
@@ -53,13 +53,13 @@ class DetailsFragment(private val character: Character) : Fragment() {
                         binding.textLocation.text = it.value?.location
                         binding.progressBarCharacterDetails.visibility = ProgressBar.INVISIBLE
                     }
-                    is CharacterDetails.Error -> Toast.makeText(
+                    is CharacterDetailsResult.Error -> Toast.makeText(
                         activity,
                         it.message,
                         Toast.LENGTH_SHORT
                     )
                         .show()
-                    is CharacterDetails.Loading -> binding.progressBarCharacterDetails.visibility =
+                    is CharacterDetailsResult.Loading -> binding.progressBarCharacterDetails.visibility =
                         ProgressBar.VISIBLE
                 }
             }
