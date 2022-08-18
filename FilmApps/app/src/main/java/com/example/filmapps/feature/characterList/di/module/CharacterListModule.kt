@@ -6,7 +6,7 @@ import com.example.filmapps.feature.characterList.data.repository.RetrofitReposi
 import com.example.filmapps.feature.characterList.di.scope.CharacterListScope
 import com.example.filmapps.feature.characterList.domain.useCase.GetListCharacterUseCase
 import com.example.filmapps.feature.characterList.domain.useCase.GetListCharacterUseCaseImpl
-import com.example.filmapps.feature.regAndAuth.di.module.ViewModelKey
+import com.example.filmapps.presentation.viewModel.ViewModelKey
 import com.example.filmapps.feature.characterList.presentation.viewModel.ListCharacterViewModel
 import dagger.Binds
 import dagger.Module

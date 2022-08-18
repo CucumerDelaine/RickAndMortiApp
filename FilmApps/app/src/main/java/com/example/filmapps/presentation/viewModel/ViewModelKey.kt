@@ -1,4 +1,4 @@
-package com.example.filmapps.feature.regAndAuth.di.module
+package com.example.filmapps.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

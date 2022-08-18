@@ -67,7 +67,9 @@ class CharacterListFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     )
                         .show()
-                    is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
+                    is CharacterList.Loading -> {
+                        progressBar.visibility = ProgressBar.VISIBLE
+                    }
                     is CharacterList.Finally -> status = false
                 }
             }

@@ -1,9 +1,9 @@
 package com.example.filmapps.feature.regAndAuth.registrations.di.module
 
 import androidx.lifecycle.ViewModel
-import com.example.filmapps.feature.regAndAuth.data.repositories.UserRepositories
-import com.example.filmapps.feature.regAndAuth.data.repositories.UserRepositoriesImpl
-import com.example.filmapps.feature.regAndAuth.di.module.ViewModelKey
+import com.example.filmapps.presentation.viewModel.ViewModelKey
+import com.example.filmapps.feature.regAndAuth.registrations.data.repository.SaveUserDataRepository
+import com.example.filmapps.feature.regAndAuth.registrations.data.repository.SaveUserDataRepositoryImpl
 import com.example.filmapps.feature.regAndAuth.registrations.di.scope.RegistrationScope
 import com.example.filmapps.feature.regAndAuth.registrations.domain.useCase.SaveUserDataUseCase
 import com.example.filmapps.feature.regAndAuth.registrations.domain.useCase.SaveUserDataUseCaseImpl
@@ -18,7 +18,7 @@ internal interface RegistrationModule {
 
     @Binds
     @RegistrationScope
-    fun provideUserRepositories(userRepositories: UserRepositoriesImpl) : UserRepositories
+    fun provideSaveDataUserRepositories(saveUserDataRepository: SaveUserDataRepositoryImpl) : SaveUserDataRepository
 
     @Binds
     @RegistrationScope

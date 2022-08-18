@@ -1,14 +1,14 @@
 package com.example.filmapps.feature.regAndAuth.authorization.domain.useCase
 
+import com.example.filmapps.feature.regAndAuth.authorization.data.repository.IsUserRegisteredRepository
 import com.example.filmapps.feature.regAndAuth.presentation.model.Result
-import com.example.filmapps.feature.regAndAuth.data.repositories.UserRepositories
 import com.example.filmapps.feature.regAndAuth.domain.model.UserDataParam
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GetInfoAboutRegisterUseCaseImpl @Inject constructor(
-    private val userRepository: UserRepositories
+    private val isUserRegisteredRepository: IsUserRegisteredRepository
 ) : GetInfoAboutRegisterUseCase {
     override suspend fun execute(param: UserDataParam): Result {
         return if (param.login.isEmpty() || param.pass.isEmpty())
@@ -16,7 +16,7 @@ class GetInfoAboutRegisterUseCaseImpl @Inject constructor(
         else {
             withContext(Dispatchers.IO) {
                 try {
-                    when (userRepository.isUserRegistered(userParam = param)) {
+                    when (isUserRegisteredRepository.isUserRegistered(userParam = param)) {
                         true -> Result.Success
                         false -> Result.Error("Error")
                     }

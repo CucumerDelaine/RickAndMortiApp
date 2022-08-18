@@ -1,20 +1,14 @@
-package com.example.filmapps.feature.regAndAuth.data.repositories
-
+package com.example.filmapps.feature.regAndAuth.registrations.data.repository
 
 import com.example.filmapps.data.bd.UserDataDAO
 import com.example.filmapps.feature.regAndAuth.data.model.UserData
 import com.example.filmapps.feature.regAndAuth.domain.model.UserDataParam
 import javax.inject.Inject
 
-internal class UserRepositoriesImpl @Inject constructor(
+internal class SaveUserDataRepositoryImpl @Inject constructor(
     private val userData: UserDataDAO
-) : UserRepositories {
+) : SaveUserDataRepository {
     override fun save(userParam: UserDataParam) {
         userData.insert(userData = UserData(login = userParam.login, pass = userParam.pass))
-    }
-
-    override fun isUserRegistered(userParam: UserDataParam): Boolean {
-        val user: UserData? = userData.getUserData(login = userParam.login, pass = userParam.pass)
-        return user != null
     }
 }

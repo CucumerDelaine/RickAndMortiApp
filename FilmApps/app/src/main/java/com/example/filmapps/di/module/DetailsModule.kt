@@ -7,7 +7,7 @@ import com.example.filmapps.data.repository.GetCharacterRepositoryImpl
 import com.example.filmapps.di.scope.CharacterScope
 import com.example.filmapps.domain.useCase.GetCharacterDetailsUseCase
 import com.example.filmapps.domain.useCase.GetCharacterDetailsUseCaseImpl
-import com.example.filmapps.feature.regAndAuth.di.module.ViewModelKey
+import com.example.filmapps.presentation.viewModel.ViewModelKey
 import com.example.filmapps.presentation.ui.ResultCharacterResponceModelImpl
 import com.example.filmapps.presentation.viewModel.CharacterDetailsViewModel
 import dagger.Binds
