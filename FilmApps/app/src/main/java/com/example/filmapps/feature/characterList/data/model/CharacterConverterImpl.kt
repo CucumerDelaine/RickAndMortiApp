@@ -4,11 +4,11 @@ import android.content.Context
 import com.example.filmapps.feature.characterListAndDetails.data.model.Character
 import javax.inject.Inject
 
-class CharacterListDatabaseModelImpl @Inject constructor(
+class CharacterConverterImpl @Inject constructor(
     private val context: Context
-) : CharacterListDatabaseModel {
+) : CharacterConverter {
     val list: MutableList<Character> = ArrayList()
-    override fun converter(values: ArrayList<Results>?): MutableList<Character> {
+    override fun convert(values: ArrayList<Results>?): MutableList<Character> {
         val list: MutableList<Character> = ArrayList()
         if (values != null) {
             for (it in values) {

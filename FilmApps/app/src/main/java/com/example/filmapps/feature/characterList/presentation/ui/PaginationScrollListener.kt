@@ -20,7 +20,7 @@ class PaginationScrollListener(
             val visibleItemCount = layoutManager.findLastCompletelyVisibleItemPosition() + 1
             if (visibleItemCount == layoutManager.itemCount && status) {
                 page++
-                vm.loadCharacterList(page)
+                vm.loadCharacterList(true)
                 progressBar.visibility = ProgressBar.VISIBLE
             }
         }

@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
-import com.example.filmapps.feature.characterListAndDetails.data.model.Character
 import com.example.filmapps.feature.characterList.presentation.model.CharacterListResult
 import com.example.filmapps.feature.characterList.presentation.viewModel.CharacterListViewModel
+import com.example.filmapps.feature.characterListAndDetails.data.model.Character
 
 
 class CharacterListFragment : Fragment() {
@@ -55,7 +57,9 @@ class CharacterListFragment : Fragment() {
 
         val recyclerView: RecyclerView = binding.list
         val progressBar: ProgressBar = binding.progressBarCharacterList
+        val swipeRefresh: SwipeRefreshLayout = binding.swipeRefresh
         recyclerView.adapter = adapter
+        vm.pageNull()
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
                 when (it) {
@@ -73,7 +77,13 @@ class CharacterListFragment : Fragment() {
             }
         }
         recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar, page))
-        vm.loadCharacterList(page)
+        swipeRefresh.setOnRefreshListener(OnRefreshListener {
+            swipeRefresh.isRefreshing = false
+            vm.clearDatabase()
+            vm.pageNull()
+            vm.loadCharacterList(true)
+        })
+        vm.loadCharacterList(true)
     }
 
 
