@@ -1,20 +1,21 @@
 package com.example.filmapps.feature.characterList.presentation.ui
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.databinding.FragmentCharacterListListBinding
-import com.example.filmapps.feature.characterList.presentation.model.Character
-import com.example.filmapps.feature.characterList.presentation.model.CharacterList
-import com.example.filmapps.feature.characterList.presentation.viewModel.ListCharacterViewModel
+import com.example.filmapps.feature.characterListAndDetails.data.model.Character
+import com.example.filmapps.feature.characterList.presentation.model.CharacterListResult
+import com.example.filmapps.feature.characterList.presentation.viewModel.CharacterListViewModel
 
 
 class CharacterListFragment : Fragment() {
@@ -23,11 +24,12 @@ class CharacterListFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val vm by viewModels<ListCharacterViewModel> {
+    private val vm by viewModels<CharacterListViewModel> {
         ComponentManager.getCharacterListComponent().viewModelsFactory()
     }
 
     private var status: Boolean = true
+    private var page: Int = 1
     private val stateClickListener: CharacterListRecycleViewAdapter.OnCharacterClickListener =
         object :
             CharacterListRecycleViewAdapter.OnCharacterClickListener {
@@ -57,28 +59,27 @@ class CharacterListFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
                 when (it) {
-                    is CharacterList.Success -> {
+                    is CharacterListResult.Success -> {
                         adapter.setData(it.value)
                         progressBar.visibility = ProgressBar.INVISIBLE
                     }
-                    is CharacterList.Error -> Toast.makeText(
-                        activity,
-                        it.message,
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
-                    is CharacterList.Loading -> progressBar.visibility = ProgressBar.VISIBLE
-                    is CharacterList.Finally -> status = false
+                    is CharacterListResult.Error -> Log.d(TAG, it.message.toString())
+                    is CharacterListResult.Loading -> progressBar.visibility = ProgressBar.VISIBLE
+                    is CharacterListResult.Finally -> {
+                        status = false
+                        progressBar.visibility = ProgressBar.INVISIBLE
+                    }
                 }
             }
         }
-        recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
-        vm.getCharacterList()
+        recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar, page))
+        vm.loadCharacterList(page)
     }
 
 
     override fun onDestroyView() {
         super.onDestroyView()
+        ComponentManager.clearCharacterListComponent()
         _binding = null
     }
 

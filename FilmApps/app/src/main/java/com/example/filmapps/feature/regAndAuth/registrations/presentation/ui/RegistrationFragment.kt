@@ -63,6 +63,7 @@ class RegistrationFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        ComponentManager.clearRegistrationComponent()
         _binding = null
     }
 }

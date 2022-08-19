@@ -61,6 +61,7 @@ class AuthorizationFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        ComponentManager.clearAuthorizationComponent()
         _binding = null
     }
 }

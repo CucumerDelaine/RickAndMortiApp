@@ -1,7 +1,8 @@
 package com.example.filmapps.di.components
 
 import android.content.Context
-import com.example.filmapps.data.bd.UserDataDAO
+import com.example.filmapps.feature.characterListAndDetails.data.bd.CharacterListDAO
+import com.example.filmapps.feature.regAndAuth.data.bd.UserDataDAO
 import com.example.filmapps.di.module.ContextModule
 import com.example.filmapps.di.module.DatabaseModule
 import com.example.filmapps.di.module.NavigationModule
@@ -22,4 +23,5 @@ interface AppComponent {
     fun getContext(): Context
     fun getDatabase(): UserDataDAO
     fun getRetrofit(): Retrofit
+    fun getCharacterDatabase(): CharacterListDAO
 }
