@@ -78,9 +78,9 @@ class CharacterListFragment : Fragment() {
         }
         recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
         swipeRefresh.setOnRefreshListener(OnRefreshListener {
-            vm.clearDatabase(false)
+            vm.loadCharacterList(true, true)
         })
-        vm.loadCharacterList(true)
+        vm.loadCharacterList(true, false)
     }
 
 

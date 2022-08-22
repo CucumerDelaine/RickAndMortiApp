@@ -35,7 +35,7 @@ class CharacterListViewModel @Inject constructor(
     }
 
 
-    fun clearDatabase(ignoreLoad: Boolean) {
+    private fun clearDatabase() {
         page = 0
         viewModelScope.launch(Dispatchers.IO) {
             when (val getResult = getCharacterListUseCase.execute()) {
@@ -43,8 +43,6 @@ class CharacterListViewModel @Inject constructor(
                 is GetCharacterListResponse.Error -> Unit
             }
         }
-        if(!ignoreLoad)
-            loadCharacterList(true)
     }
 
 
@@ -55,15 +53,21 @@ class CharacterListViewModel @Inject constructor(
         }
     }
 
-    fun loadCharacterList(ignoreCache: Boolean) {
+    fun loadCharacterList(ignoreCache: Boolean, clearCache: Boolean) {
+        if (clearCache)
+            clearDatabase()
         viewModelScope.launch(Dispatchers.IO) {
             page++
             if (page == 43)
                 _mutableState.emit(CharacterListResult.Finally)
             else {
                 when (val result = getAndSaveCharacterListUseCase.execute(page, ignoreCache)) {
-                    is SaveCharacterListResult.Success -> _mutableState.emit(getCharacterList())
-                    is SaveCharacterListResult.Error -> _mutableState.emit(
+                    is GetCharacterListResponse.Success -> _mutableState.emit(
+                        CharacterListResult.Success(
+                            result.value
+                        )
+                    )
+                    is GetCharacterListResponse.Error -> _mutableState.emit(
                         CharacterListResult.Error(
                             result.message
                         )
