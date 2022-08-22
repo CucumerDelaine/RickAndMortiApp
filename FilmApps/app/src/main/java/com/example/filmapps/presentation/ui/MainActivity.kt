@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity() {
         ComponentManager.init(context = applicationContext)
         ComponentManager.appComponent.inject(this)
         super.onCreate(savedInstanceState)
-
+        if (savedInstanceState == null)
+            router.newRootChain(Screens.AuthorizationScreen())
         binding = ActivityMainBinding.inflate(layoutInflater)
             .also { layout -> setContentView(layout.root) }
     }
@@ -41,11 +42,6 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
-    }
-
-    override fun onStart() {
-        router.newRootChain(Screens.RegistrationScreen())
-        super.onStart()
     }
 
     override fun onDestroy() {

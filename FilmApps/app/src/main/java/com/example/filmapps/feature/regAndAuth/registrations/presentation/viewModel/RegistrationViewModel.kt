@@ -25,7 +25,7 @@ internal class SaveUserDataViewModel @Inject constructor(
     val mutableState: StateFlow<Result> = _mutableState
 
     fun goToAuth() {
-        router.newChain(Screens.AuthorizationScreen())
+        router.backTo(Screens.AuthorizationScreen())
     }
 
     fun registration(login: String, pass: String) {

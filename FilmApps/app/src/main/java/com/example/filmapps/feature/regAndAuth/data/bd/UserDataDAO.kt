@@ -1,4 +1,4 @@
-package com.example.filmapps.data.bd
+package com.example.filmapps.feature.regAndAuth.data.bd
 
 
 import androidx.room.Dao

@@ -3,11 +3,11 @@ package com.example.filmapps.feature.characterList.presentation.ui
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.filmapps.feature.characterList.presentation.viewModel.ListCharacterViewModel
+import com.example.filmapps.feature.characterList.presentation.viewModel.CharacterListViewModel
 
 
 class PaginationScrollListener(
-    private val vm: ListCharacterViewModel,
+    private val vm: CharacterListViewModel,
     private val status: Boolean,
     private val progressBar: ProgressBar
 ) : RecyclerView.OnScrollListener() {
@@ -18,7 +18,7 @@ class PaginationScrollListener(
             val layoutManager = recyclerView.layoutManager as GridLayoutManager
             val visibleItemCount = layoutManager.findLastCompletelyVisibleItemPosition() + 1
             if (visibleItemCount == layoutManager.itemCount && status) {
-                vm.getCharacterList()
+                vm.getCharacterList(ignoreCache = true, clearCache = false)
                 progressBar.visibility = ProgressBar.VISIBLE
             }
         }

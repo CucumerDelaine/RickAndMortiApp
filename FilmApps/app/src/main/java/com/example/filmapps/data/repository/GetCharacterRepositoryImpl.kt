@@ -1,18 +1,18 @@
 package com.example.filmapps.data.repository
 
-import com.example.filmapps.data.retrofit.GetCharacterApi
-import com.example.filmapps.presentation.model.CharacterDetailsResponce
+import com.example.filmapps.feature.characterListAndDetails.data.bd.CharacterListDAO
+import com.example.filmapps.presentation.model.CharacterDetailsResponse
 import java.lang.Exception
 import javax.inject.Inject
 
 class GetCharacterRepositoryImpl @Inject constructor(
-    private val retrofit: GetCharacterApi
-): GetCharacterRepository {
-    override suspend fun loadCharacter(id: String): CharacterDetailsResponce {
+    private val characterListDao: CharacterListDAO
+) : GetCharacterRepository {
+    override suspend fun getCharacter(id: Int): CharacterDetailsResponse {
         return try {
-            CharacterDetailsResponce.Success(retrofit.getCharacter(id))
+            CharacterDetailsResponse.Success(characterListDao.getById(id))
         } catch (e: Exception) {
-            CharacterDetailsResponce.Error(e)
+            CharacterDetailsResponse.Error(e)
         }
     }
 }

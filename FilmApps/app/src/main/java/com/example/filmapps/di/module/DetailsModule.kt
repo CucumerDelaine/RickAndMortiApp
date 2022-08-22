@@ -1,14 +1,14 @@
 package com.example.filmapps.di.module
 
 import androidx.lifecycle.ViewModel
-import com.example.filmapps.presentation.ui.ResultCharacterResponceModel
 import com.example.filmapps.data.repository.GetCharacterRepository
 import com.example.filmapps.data.repository.GetCharacterRepositoryImpl
 import com.example.filmapps.di.scope.CharacterScope
 import com.example.filmapps.domain.useCase.GetCharacterDetailsUseCase
 import com.example.filmapps.domain.useCase.GetCharacterDetailsUseCaseImpl
 import com.example.filmapps.feature.regAndAuth.di.module.ViewModelKey
-import com.example.filmapps.presentation.ui.ResultCharacterResponceModelImpl
+import com.example.filmapps.presentation.ui.ResultCharacterResponseModel
+import com.example.filmapps.presentation.ui.ResultCharacterResponseModelImpl
 import com.example.filmapps.presentation.viewModel.CharacterDetailsViewModel
 import dagger.Binds
 import dagger.Module
@@ -33,5 +33,5 @@ internal interface DetailsModule {
 
     @Binds
     @CharacterScope
-    fun provideCharacterConverter(characterConverter: ResultCharacterResponceModelImpl) : ResultCharacterResponceModel
+    fun provideCharacterConverter(characterConverter: ResultCharacterResponseModelImpl) : ResultCharacterResponseModel
 }
