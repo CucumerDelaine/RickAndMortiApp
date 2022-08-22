@@ -18,7 +18,9 @@ import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.feature.characterList.presentation.model.CharacterListResult
 import com.example.filmapps.feature.characterList.presentation.viewModel.CharacterListViewModel
 import com.example.filmapps.feature.characterListAndDetails.data.model.Character
-import java.util.concurrent.Executor
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 
 
 class CharacterListFragment : Fragment() {
@@ -32,7 +34,6 @@ class CharacterListFragment : Fragment() {
     }
 
     private var status: Boolean = true
-    private var page: Int = 1
     private val stateClickListener: CharacterListRecycleViewAdapter.OnCharacterClickListener =
         object :
             CharacterListRecycleViewAdapter.OnCharacterClickListener {
@@ -82,6 +83,7 @@ class CharacterListFragment : Fragment() {
             vm.getCharacterList(ignoreCache = true, clearCache = true)
         })
         vm.getCharacterList(ignoreCache = true, clearCache = false)
+        timer()
     }
 
 
@@ -89,5 +91,13 @@ class CharacterListFragment : Fragment() {
         super.onDestroyView()
         ComponentManager.clearCharacterListComponent()
         _binding = null
+    }
+
+
+    private fun timer() {
+        val service: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
+        service.scheduleWithFixedDelay(Runnable {
+            vm.getCharacterList(ignoreCache = true, clearCache = true)
+        }, 0, 5, TimeUnit.MINUTES)
     }
 }
