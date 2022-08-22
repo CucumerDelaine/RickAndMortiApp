@@ -18,7 +18,7 @@ class PaginationScrollListener(
             val layoutManager = recyclerView.layoutManager as GridLayoutManager
             val visibleItemCount = layoutManager.findLastCompletelyVisibleItemPosition() + 1
             if (visibleItemCount == layoutManager.itemCount && status) {
-                vm.loadCharacterList(true, false)
+                vm.getCharacterList(ignoreCache = true, clearCache = false)
                 progressBar.visibility = ProgressBar.VISIBLE
             }
         }

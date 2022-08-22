@@ -18,6 +18,7 @@ import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.feature.characterList.presentation.model.CharacterListResult
 import com.example.filmapps.feature.characterList.presentation.viewModel.CharacterListViewModel
 import com.example.filmapps.feature.characterListAndDetails.data.model.Character
+import java.util.concurrent.Executor
 
 
 class CharacterListFragment : Fragment() {
@@ -78,9 +79,9 @@ class CharacterListFragment : Fragment() {
         }
         recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
         swipeRefresh.setOnRefreshListener(OnRefreshListener {
-            vm.loadCharacterList(true, true)
+            vm.getCharacterList(ignoreCache = true, clearCache = true)
         })
-        vm.loadCharacterList(true, false)
+        vm.getCharacterList(ignoreCache = true, clearCache = false)
     }
 
 
@@ -89,5 +90,4 @@ class CharacterListFragment : Fragment() {
         ComponentManager.clearCharacterListComponent()
         _binding = null
     }
-
 }

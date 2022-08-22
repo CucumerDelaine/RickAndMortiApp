@@ -5,11 +5,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.filmapps.Screens
 import com.example.filmapps.feature.characterListAndDetails.data.model.Character
 import com.example.filmapps.feature.characterList.domain.useCase.ClearDatabaseUseCase
-import com.example.filmapps.feature.characterList.domain.useCase.GetCharacterListUseCase
 import com.example.filmapps.feature.characterList.domain.useCase.GetAndSaveCharacterListUseCase
 import com.example.filmapps.feature.characterList.presentation.model.CharacterListResult
+import com.example.filmapps.feature.characterList.presentation.model.ClearDatabaseResult
 import com.example.filmapps.feature.characterList.presentation.model.GetCharacterListResponse
-import com.example.filmapps.feature.characterList.presentation.model.SaveCharacterListResult
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +17,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CharacterListViewModel @Inject constructor(
-    private val getCharacterListUseCase: GetCharacterListUseCase,
     private val getAndSaveCharacterListUseCase: GetAndSaveCharacterListUseCase,
     private val clearDatabaseUseCase: ClearDatabaseUseCase,
     private val router: Router
@@ -34,45 +32,43 @@ class CharacterListViewModel @Inject constructor(
         router.newChain(Screens.Details(character))
     }
 
-
-    private fun clearDatabase() {
+    private suspend fun clearDatabase(): ClearDatabaseResult {
         page = 0
-        viewModelScope.launch(Dispatchers.IO) {
-            when (val getResult = getCharacterListUseCase.execute()) {
-                is GetCharacterListResponse.Success -> clearDatabaseUseCase.execute(getResult.value)
-                is GetCharacterListResponse.Error -> Unit
-            }
-        }
+        return clearDatabaseUseCase.execute()
     }
 
-
-    private suspend fun getCharacterList(): CharacterListResult {
-        return when (val getResult = getCharacterListUseCase.execute()) {
-            is GetCharacterListResponse.Success -> CharacterListResult.Success(getResult.value)
-            is GetCharacterListResponse.Error -> CharacterListResult.Error(getResult.message)
-        }
-    }
-
-    fun loadCharacterList(ignoreCache: Boolean, clearCache: Boolean) {
-        if (clearCache)
-            clearDatabase()
+    fun getCharacterList(ignoreCache: Boolean, clearCache: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            page++
-            if (page == 43)
-                _mutableState.emit(CharacterListResult.Finally)
-            else {
-                when (val result = getAndSaveCharacterListUseCase.execute(page, ignoreCache)) {
-                    is GetCharacterListResponse.Success -> _mutableState.emit(
-                        CharacterListResult.Success(
-                            result.value
-                        )
-                    )
-                    is GetCharacterListResponse.Error -> _mutableState.emit(
+            if (clearCache) {
+                when (val it = clearDatabase()) {
+                    is ClearDatabaseResult.Success -> loadCharacterList(ignoreCache)
+                    is ClearDatabaseResult.Error -> _mutableState.emit(
                         CharacterListResult.Error(
-                            result.message
+                            it.message
                         )
                     )
                 }
+            } else
+                loadCharacterList(ignoreCache)
+        }
+    }
+
+    private suspend fun loadCharacterList(ignoreCache: Boolean) {
+        page++
+        if (page == 43)
+            _mutableState.emit(CharacterListResult.Finally)
+        else {
+            when (val result = getAndSaveCharacterListUseCase.execute(page, ignoreCache)) {
+                is GetCharacterListResponse.Success -> _mutableState.emit(
+                    CharacterListResult.Success(
+                        result.value
+                    )
+                )
+                is GetCharacterListResponse.Error -> _mutableState.emit(
+                    CharacterListResult.Error(
+                        result.message
+                    )
+                )
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.filmapps.feature.characterList.data.repository
 
+import com.example.filmapps.feature.characterList.presentation.model.ClearDatabaseResult
 import com.example.filmapps.feature.characterList.presentation.model.GetCharacterListResponse
 import com.example.filmapps.feature.characterList.presentation.model.SaveCharacterListResult
 import com.example.filmapps.feature.characterListAndDetails.data.bd.CharacterListDAO
@@ -29,7 +30,13 @@ class CacheRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun clearDatabase(characterList: List<Character>?) {
-        characterListDao.delete(characterList)
+    override suspend fun clearDatabase(): ClearDatabaseResult {
+        return try {
+            characterListDao.delete(characterListDao.getAll())
+            ClearDatabaseResult.Success
+        }
+        catch (e: Exception) {
+            ClearDatabaseResult.Error(e)
+        }
     }
 }
