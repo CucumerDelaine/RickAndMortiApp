@@ -9,8 +9,7 @@ import com.example.filmapps.feature.characterList.presentation.viewModel.Charact
 class PaginationScrollListener(
     private val vm: CharacterListViewModel,
     private val status: Boolean,
-    private val progressBar: ProgressBar,
-    private var page: Int
+    private val progressBar: ProgressBar
 ) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -19,7 +18,6 @@ class PaginationScrollListener(
             val layoutManager = recyclerView.layoutManager as GridLayoutManager
             val visibleItemCount = layoutManager.findLastCompletelyVisibleItemPosition() + 1
             if (visibleItemCount == layoutManager.itemCount && status) {
-                page++
                 vm.loadCharacterList(true)
                 progressBar.visibility = ProgressBar.VISIBLE
             }

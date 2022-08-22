@@ -11,5 +11,5 @@ object Screens {
     fun RegistrationScreen() = FragmentScreen { RegistrationFragment() }
     fun AuthorizationScreen() = FragmentScreen { AuthorizationFragment() }
     fun ListFilmScreen() = FragmentScreen { CharacterListFragment() }
-    fun Details(character: Character) = FragmentScreen { DetailsFragment(character) }
+    fun Details(character: Character) = FragmentScreen { DetailsFragment.getNewInstance(character) }
 }

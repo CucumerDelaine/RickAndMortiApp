@@ -59,12 +59,12 @@ class CharacterListFragment : Fragment() {
         val progressBar: ProgressBar = binding.progressBarCharacterList
         val swipeRefresh: SwipeRefreshLayout = binding.swipeRefresh
         recyclerView.adapter = adapter
-        vm.pageNull()
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
                 when (it) {
                     is CharacterListResult.Success -> {
                         adapter.setData(it.value)
+                        swipeRefresh.isRefreshing = false
                         progressBar.visibility = ProgressBar.INVISIBLE
                     }
                     is CharacterListResult.Error -> Log.d(TAG, it.message.toString())
@@ -76,12 +76,9 @@ class CharacterListFragment : Fragment() {
                 }
             }
         }
-        recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar, page))
+        recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
         swipeRefresh.setOnRefreshListener(OnRefreshListener {
-            swipeRefresh.isRefreshing = false
-            vm.clearDatabase()
-            vm.pageNull()
-            vm.loadCharacterList(true)
+            vm.clearDatabase(false)
         })
         vm.loadCharacterList(true)
     }

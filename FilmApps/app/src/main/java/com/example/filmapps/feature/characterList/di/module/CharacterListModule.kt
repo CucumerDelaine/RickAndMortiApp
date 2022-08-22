@@ -34,7 +34,7 @@ internal interface CharacterListModule {
 
     @Binds
     @CharacterListScope
-    fun provideLoadCharacterListUseCase(loadCharacterListUseCase: LoadAndSaveCharacterListUseCaseImpl) : LoadAndSaveCharacterListUseCase
+    fun provideLoadCharacterListUseCase(loadCharacterListUseCase: GetAndSaveCharacterListUseCaseImpl) : GetAndSaveCharacterListUseCase
 
     @Binds
     @IntoMap

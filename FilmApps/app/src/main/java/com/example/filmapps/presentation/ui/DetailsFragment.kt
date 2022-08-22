@@ -19,7 +19,7 @@ import com.example.filmapps.presentation.model.CharacterDetailsResult
 import com.example.filmapps.presentation.viewModel.CharacterDetailsViewModel
 
 
-class DetailsFragment(private val character: Character) : Fragment() {
+class DetailsFragment : Fragment() {
 
 
     private var _binding: FragmentDetailsBinding? = null
@@ -28,6 +28,8 @@ class DetailsFragment(private val character: Character) : Fragment() {
     private val vm by viewModels<CharacterDetailsViewModel> {
         ComponentManager.getDetailsComponent().viewModelsFactory()
     }
+    private val charId: Int
+        get() = requireArguments().getInt("ID")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,7 +59,7 @@ class DetailsFragment(private val character: Character) : Fragment() {
                         binding.textGender.text = it.value?.gender
                         binding.textGender.visibility = TextView.VISIBLE
                         binding.textOrigin.text = it.value?.origin
-                        binding.textOrigin.visibility =  TextView.VISIBLE
+                        binding.textOrigin.visibility = TextView.VISIBLE
                         binding.textLocation.text = it.value?.location
                         binding.textLocation.visibility = TextView.VISIBLE
                         binding.progressBarCharacterDetails.visibility = ProgressBar.INVISIBLE
@@ -66,14 +68,13 @@ class DetailsFragment(private val character: Character) : Fragment() {
                         activity,
                         it.message,
                         Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    ).show()
                     is CharacterDetailsResult.Loading -> binding.progressBarCharacterDetails.visibility =
                         ProgressBar.VISIBLE
                 }
             }
         }
-        character.id?.let { vm.getCharacterDetails(it) }
+        vm.getCharacterDetails(charId)
     }
 
     override fun onDestroyView() {
@@ -81,4 +82,15 @@ class DetailsFragment(private val character: Character) : Fragment() {
         ComponentManager.clearDetailsComponent()
         _binding = null
     }
+
+    companion object {
+        fun getNewInstance(character: Character): DetailsFragment {
+            return DetailsFragment().apply {
+                arguments = Bundle().apply {
+                    character.id?.let { putInt("ID", it) }
+                }
+            }
+        }
+    }
+
 }

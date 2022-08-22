@@ -6,8 +6,7 @@ import com.example.filmapps.Screens
 import com.example.filmapps.feature.characterListAndDetails.data.model.Character
 import com.example.filmapps.feature.characterList.domain.useCase.ClearDatabaseUseCase
 import com.example.filmapps.feature.characterList.domain.useCase.GetCharacterListUseCase
-import com.example.filmapps.feature.characterList.domain.useCase.LoadAndSaveCharacterListUseCase
-import com.example.filmapps.feature.characterList.data.model.CharacterConverter
+import com.example.filmapps.feature.characterList.domain.useCase.GetAndSaveCharacterListUseCase
 import com.example.filmapps.feature.characterList.presentation.model.CharacterListResult
 import com.example.filmapps.feature.characterList.presentation.model.GetCharacterListResponse
 import com.example.filmapps.feature.characterList.presentation.model.SaveCharacterListResult
@@ -20,7 +19,7 @@ import javax.inject.Inject
 
 class CharacterListViewModel @Inject constructor(
     private val getCharacterListUseCase: GetCharacterListUseCase,
-    private val loadCharacterListUseCase: LoadAndSaveCharacterListUseCase,
+    private val getAndSaveCharacterListUseCase: GetAndSaveCharacterListUseCase,
     private val clearDatabaseUseCase: ClearDatabaseUseCase,
     private val router: Router
 ) : ViewModel() {
@@ -31,28 +30,26 @@ class CharacterListViewModel @Inject constructor(
     val mutableState: StateFlow<CharacterListResult> = _mutableState
     private var page = 0
 
-
-    fun pageNull() {
-        page = 0
-    }
-
     fun goToDetails(character: Character) {
         router.newChain(Screens.Details(character))
     }
 
 
-    fun clearDatabase() {
+    fun clearDatabase(ignoreLoad: Boolean) {
+        page = 0
         viewModelScope.launch(Dispatchers.IO) {
             when (val getResult = getCharacterListUseCase.execute()) {
                 is GetCharacterListResponse.Success -> clearDatabaseUseCase.execute(getResult.value)
                 is GetCharacterListResponse.Error -> Unit
             }
         }
+        if(!ignoreLoad)
+            loadCharacterList(true)
     }
 
 
     private suspend fun getCharacterList(): CharacterListResult {
-       return when (val getResult = getCharacterListUseCase.execute()) {
+        return when (val getResult = getCharacterListUseCase.execute()) {
             is GetCharacterListResponse.Success -> CharacterListResult.Success(getResult.value)
             is GetCharacterListResponse.Error -> CharacterListResult.Error(getResult.message)
         }
@@ -64,9 +61,13 @@ class CharacterListViewModel @Inject constructor(
             if (page == 43)
                 _mutableState.emit(CharacterListResult.Finally)
             else {
-                when(val result = loadCharacterListUseCase.execute(page, ignoreCache)) {
+                when (val result = getAndSaveCharacterListUseCase.execute(page, ignoreCache)) {
                     is SaveCharacterListResult.Success -> _mutableState.emit(getCharacterList())
-                    is SaveCharacterListResult.Error -> _mutableState.emit(CharacterListResult.Error(result.message))
+                    is SaveCharacterListResult.Error -> _mutableState.emit(
+                        CharacterListResult.Error(
+                            result.message
+                        )
+                    )
                 }
             }
         }
