@@ -26,5 +26,6 @@
     <string name="origin">Место рождения - </string>
     <string name="location">Местонахождение - </string>
     <string name="backToList">Назад</string>
+    <string name="characterList">Персонажи "Рик и Морти" </string>
 
 </resources>

@@ -7,5 +7,6 @@ data class CharacterDetailsUIModel(
     var gender: String?,
     var origin: String?,
     var location: String?,
-    var image: String?
+    var image: String?,
+    var _name: String?
 )

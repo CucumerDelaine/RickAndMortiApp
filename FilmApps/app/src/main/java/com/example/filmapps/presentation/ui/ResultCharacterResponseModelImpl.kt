@@ -16,6 +16,7 @@ class ResultCharacterResponseModelImpl @Inject constructor(
         "${context.getString(R.string.gender)} ${values?.gender}",
         "${context.getString(R.string.origin)} ${values?.origin}",
         "${context.getString(R.string.location)} ${values?.location}",
-        values?.image
+        values?.image,
+        values?.name
     )
 }

@@ -1,6 +1,6 @@
 package com.example.filmapps.feature.regAndAuth.authorization.presentation.ui
 
-import android.app.ProgressDialog.show
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +24,9 @@ class AuthorizationFragment : Fragment() {
         ComponentManager.getAuthorizationComponent().viewModelsFactory()
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
