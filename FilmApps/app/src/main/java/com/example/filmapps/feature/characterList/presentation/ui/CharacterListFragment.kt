@@ -83,7 +83,6 @@ class CharacterListFragment : Fragment() {
             vm.getCharacterList(ignoreCache = true, clearCache = true)
         })
         vm.getCharacterList(ignoreCache = true, clearCache = false)
-        timer()
     }
 
 
@@ -91,13 +90,5 @@ class CharacterListFragment : Fragment() {
         super.onDestroyView()
         ComponentManager.clearCharacterListComponent()
         _binding = null
-    }
-
-
-    private fun timer() {
-        val service: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
-        service.scheduleWithFixedDelay(Runnable {
-            vm.getCharacterList(ignoreCache = true, clearCache = true)
-        }, 0, 5, TimeUnit.MINUTES)
     }
 }

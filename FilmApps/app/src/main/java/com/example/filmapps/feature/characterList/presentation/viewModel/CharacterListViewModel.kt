@@ -14,6 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class CharacterListViewModel @Inject constructor(
@@ -27,6 +30,10 @@ class CharacterListViewModel @Inject constructor(
         MutableStateFlow(CharacterListResult.Loading)
     val mutableState: StateFlow<CharacterListResult> = _mutableState
     private var page = 0
+
+    init {
+        timer()
+    }
 
     fun goToDetails(character: Character) {
         router.newChain(Screens.Details(character))
@@ -71,5 +78,12 @@ class CharacterListViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    private fun timer() {
+        val service: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
+        service.scheduleWithFixedDelay(Runnable {
+            getCharacterList(ignoreCache = true, clearCache = true)
+        }, 0, 1, TimeUnit.MINUTES)
     }
 }
