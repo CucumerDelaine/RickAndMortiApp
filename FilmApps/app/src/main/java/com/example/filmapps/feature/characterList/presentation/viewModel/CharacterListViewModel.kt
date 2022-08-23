@@ -1,5 +1,7 @@
 package com.example.filmapps.feature.characterList.presentation.viewModel
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmapps.Screens
@@ -14,6 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class CharacterListViewModel @Inject constructor(
@@ -28,8 +33,12 @@ class CharacterListViewModel @Inject constructor(
     val mutableState: StateFlow<CharacterListResult> = _mutableState
     private var page = 0
 
+    init {
+        timer()
+    }
+
     fun goToDetails(character: Character) {
-        router.newChain(Screens.Details(character))
+        router.navigateTo(Screens.Details(character))
     }
 
     private suspend fun clearDatabase(): ClearDatabaseResult {
@@ -71,5 +80,12 @@ class CharacterListViewModel @Inject constructor(
                 )
             }
         }
+    }
+
+    private fun timer() {
+        val service: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
+        service.scheduleWithFixedDelay(Runnable {
+            getCharacterList(ignoreCache = true, clearCache = true)
+        }, 0, 1, TimeUnit.MINUTES)
     }
 }

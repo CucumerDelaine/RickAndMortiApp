@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
@@ -17,6 +14,7 @@ import com.example.filmapps.databinding.FragmentDetailsBinding
 import com.example.filmapps.feature.characterListAndDetails.data.model.Character
 import com.example.filmapps.presentation.model.CharacterDetailsResult
 import com.example.filmapps.presentation.viewModel.CharacterDetailsViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
 
 
 class DetailsFragment : Fragment() {
@@ -62,6 +60,7 @@ class DetailsFragment : Fragment() {
                         binding.textOrigin.visibility = TextView.VISIBLE
                         binding.textLocation.text = it.value?.location
                         binding.textLocation.visibility = TextView.VISIBLE
+                        binding.backToCharList.visibility = Button.VISIBLE
                         binding.progressBarCharacterDetails.visibility = ProgressBar.INVISIBLE
                     }
                     is CharacterDetailsResult.Error -> Toast.makeText(
@@ -75,6 +74,9 @@ class DetailsFragment : Fragment() {
             }
         }
         vm.getCharacterDetails(charId)
+        binding.backToCharList.setOnClickListener {
+            vm.backToCharLIst()
+        }
     }
 
     override fun onDestroyView() {

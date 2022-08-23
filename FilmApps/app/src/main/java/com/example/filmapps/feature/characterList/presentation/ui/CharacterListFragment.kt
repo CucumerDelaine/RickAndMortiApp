@@ -18,7 +18,9 @@ import com.example.filmapps.databinding.FragmentCharacterListListBinding
 import com.example.filmapps.feature.characterList.presentation.model.CharacterListResult
 import com.example.filmapps.feature.characterList.presentation.viewModel.CharacterListViewModel
 import com.example.filmapps.feature.characterListAndDetails.data.model.Character
-import java.util.concurrent.Executor
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.TimeUnit
 
 
 class CharacterListFragment : Fragment() {
@@ -32,7 +34,6 @@ class CharacterListFragment : Fragment() {
     }
 
     private var status: Boolean = true
-    private var page: Int = 1
     private val stateClickListener: CharacterListRecycleViewAdapter.OnCharacterClickListener =
         object :
             CharacterListRecycleViewAdapter.OnCharacterClickListener {
