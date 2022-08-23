@@ -2,10 +2,12 @@ package com.example.filmapps.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.filmapps.Screens
 import com.example.filmapps.domain.useCase.GetCharacterDetailsUseCase
 import com.example.filmapps.presentation.model.CharacterDetailsResult
 import com.example.filmapps.presentation.model.CharacterDetailsResponse
 import com.example.filmapps.presentation.ui.ResultCharacterResponseModel
+import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,12 +16,17 @@ import javax.inject.Inject
 
 class CharacterDetailsViewModel @Inject constructor(
     private val getCharacterDetailsUseCase: GetCharacterDetailsUseCase,
-    private val characterConverter: ResultCharacterResponseModel
+    private val characterConverter: ResultCharacterResponseModel,
+    private val router: Router
 ) : ViewModel() {
 
     private val _mutableState: MutableStateFlow<CharacterDetailsResult> =
         MutableStateFlow(CharacterDetailsResult.Loading)
     val mutableState: StateFlow<CharacterDetailsResult> = _mutableState
+
+    fun backToCharLIst() {
+        router.backTo(Screens.ListFilmScreen())
+    }
 
 
     fun getCharacterDetails(id: Int) {

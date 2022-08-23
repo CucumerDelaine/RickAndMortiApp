@@ -1,5 +1,7 @@
 package com.example.filmapps.feature.characterList.presentation.viewModel
 
+import android.content.ContentValues
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.filmapps.Screens
@@ -36,7 +38,7 @@ class CharacterListViewModel @Inject constructor(
     }
 
     fun goToDetails(character: Character) {
-        router.newChain(Screens.Details(character))
+        router.navigateTo(Screens.Details(character))
     }
 
     private suspend fun clearDatabase(): ClearDatabaseResult {

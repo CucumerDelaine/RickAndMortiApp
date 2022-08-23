@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         ComponentManager.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)
-            router.newRootChain(Screens.AuthorizationScreen())
+            router.newRootScreen(Screens.AuthorizationScreen())
         binding = ActivityMainBinding.inflate(layoutInflater)
             .also { layout -> setContentView(layout.root) }
     }

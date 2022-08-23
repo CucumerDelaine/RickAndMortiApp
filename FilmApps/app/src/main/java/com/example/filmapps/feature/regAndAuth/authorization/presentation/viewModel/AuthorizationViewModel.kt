@@ -25,11 +25,11 @@ internal class AuthorizationViewModel @Inject constructor(
     val mutableState: StateFlow<Result> = _mutableState
 
     fun goToMain() {
-        router.newChain(Screens.RegistrationScreen())
+        router.navigateTo(Screens.RegistrationScreen())
     }
 
     fun goToFilm() {
-        router.newChain(Screens.ListFilmScreen())
+        router.navigateTo(Screens.ListFilmScreen())
     }
 
     fun auth(login: String, pass: String) {
