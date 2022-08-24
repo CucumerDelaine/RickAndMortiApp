@@ -61,7 +61,7 @@ class DetailsFragment : Fragment() {
                         binding.textLocation.text = it.value?.location
                         binding.textLocation.visibility = TextView.VISIBLE
                         binding.backToCharList.visibility = Button.VISIBLE
-                        binding.toolbarDetails.title = it.value?._name
+                        binding.toolbarDetails.title = it.value?.titleName
                         binding.progressBarCharacterDetails.visibility = ProgressBar.INVISIBLE
                     }
                     is CharacterDetailsResult.Error -> Toast.makeText(

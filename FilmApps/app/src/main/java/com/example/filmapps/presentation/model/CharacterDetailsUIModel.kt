@@ -8,5 +8,5 @@ data class CharacterDetailsUIModel(
     var origin: String?,
     var location: String?,
     var image: String?,
-    var _name: String?
+    var titleName: String?
 )
