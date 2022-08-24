@@ -19,7 +19,7 @@ tools:context=".feature.regAndAuth.registrations.presentation.ui.RegistrationFra
         android:layout_height="match_parent"
         app:spanCount="3"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:context=".feature.characterList.presentation.ui.CharacterListFragment"
+        tools:context=".feature.characterListAndDetails.characterList.presentation.ui.CharacterListFragment"
         tools:listitem="@layout/fragment_character_list" />
 
     <ProgressBar
