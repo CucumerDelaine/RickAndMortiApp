@@ -3,8 +3,9 @@ package com.example.filmapps
 import android.content.Context
 import com.example.filmapps.di.components.*
 import com.example.filmapps.di.module.ContextModule
-import com.example.filmapps.feature.characterList.di.components.CharacterListComponent
-import com.example.filmapps.feature.characterList.di.components.DaggerCharacterListComponent
+import com.example.filmapps.feature.characterListAndDetails.characterList.di.components.CharacterListComponent
+import com.example.filmapps.feature.characterListAndDetails.characterList.di.components.DaggerCharacterListComponent
+import com.example.filmapps.feature.characterListAndDetails.details.di.components.DetailsComponent
 
 object ComponentManager {
 
