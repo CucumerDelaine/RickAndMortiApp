@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FilmApps"
         tools:targetApi="31" >
         <activity
-            android:name=".presentation.ui.MainActivity"
+            android:name="com.example.filmapps.app.presentation.ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.FilmApps" >
             <intent-filter>

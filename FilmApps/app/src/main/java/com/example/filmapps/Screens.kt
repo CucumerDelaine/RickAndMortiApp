@@ -1,10 +1,10 @@
 package com.example.filmapps
 
-import com.example.filmapps.feature.characterListAndDetails.data.model.Character
-import com.example.filmapps.feature.regAndAuth.authorization.presentation.ui.AuthorizationFragment
-import com.example.filmapps.feature.regAndAuth.registrations.presentation.ui.RegistrationFragment
-import com.example.filmapps.feature.characterListAndDetails.characterList.presentation.ui.CharacterListFragment
-import com.example.filmapps.feature.characterListAndDetails.details.presentation.ui.DetailsFragment
+import com.example.filmapps.featureCharacterListAndDetails.data.model.Character
+import com.example.filmapps.featureRegAndAuth.featureAuthorization.presentation.ui.AuthorizationFragment
+import com.example.filmapps.featureRegAndAuth.featureRegistrations.presentation.ui.RegistrationFragment
+import com.example.filmapps.featureCharacterListAndDetails.featureCharacterList.presentation.ui.CharacterListFragment
+import com.example.filmapps.featureCharacterListAndDetails.featureDetails.presentation.ui.DetailsFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object Screens {

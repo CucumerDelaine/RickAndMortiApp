@@ -4,12 +4,12 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".feature.regAndAuth.registrations.presentation.ui.RegistrationFragment">
+tools:context=".featureRegAndAuth.featureRegistrations.presentation.ui.RegistrationFragment">
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/swipeRefresh"
-    tools:context=".feature.regAndAuth.registrations.presentation.ui.RegistrationFragment"
+    tools:context=".featureRegAndAuth.featureRegistrations.presentation.ui.RegistrationFragment"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,7 +19,7 @@ tools:context=".feature.regAndAuth.registrations.presentation.ui.RegistrationFra
         android:layout_height="match_parent"
         app:spanCount="3"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:context=".feature.characterListAndDetails.characterList.presentation.ui.CharacterListFragment"
+        tools:context=".featureCharacterListAndDetails.featureCharacterList.presentation.ui.CharacterListFragment"
         tools:listitem="@layout/fragment_character_list" />
 
     <ProgressBar
