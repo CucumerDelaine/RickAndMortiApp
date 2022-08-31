@@ -1,15 +1,12 @@
 package com.example.filmapps.app.di.components
 
-import com.example.filmapps.app.di.module.*
+import com.example.core.di.CoreAppApi
 import com.example.filmapps.app.presentation.ui.MainActivity
-import com.example.filmapps.appApi.di.AppApi
-import com.example.filmapps.appApi.di.ViewModelModule
 import dagger.Component
 import javax.inject.Singleton
 
-@Component(modules = [ContextModule::class, NavigationModule::class, DatabaseModule::class, NetworkModule::class, ViewModelModule::class])
+@Component(dependencies = [CoreAppApi::class])
 @Singleton
-interface AppComponent: AppApi {
-
+interface AppComponent {
     fun inject(activity: MainActivity)
 }
