@@ -29,7 +29,7 @@ class CharacterListFragment : Fragment() {
     }
 
     private val vm by viewModels<CharacterListViewModel> {
-        CharacterListComponentManager.getCharacterListComponent()!!.viewModelFactory()
+        CharacterListComponentManager.getCharacterListComponent().viewModelFactory()
     }
 
 
@@ -92,7 +92,7 @@ class CharacterListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        CharacterListComponentManager.clearCharacterListComponent()
+        CharacterListComponentManager.clearCharacterListComponent()
         _binding = null
     }
 }

@@ -23,7 +23,7 @@ class RegistrationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val vm by viewModels<SaveUserDataViewModel> {
-        RegComponentManager.getRegistrationComponent()!!.viewModelFactory()
+        RegComponentManager.getRegistrationComponent().viewModelFactory()
     }
 
 
@@ -83,7 +83,7 @@ class RegistrationFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        RegComponentManager.clearRegistrationComponent()
+        RegComponentManager.clearRegistrationComponent()
         _binding = null
     }
 }

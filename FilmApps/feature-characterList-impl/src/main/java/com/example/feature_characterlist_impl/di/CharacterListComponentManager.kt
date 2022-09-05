@@ -12,7 +12,7 @@ object CharacterListComponentManager {
     private var coreComponent: CoreAppApi? = null
     private var coreNetworkComponent: CoreNetworkApi? = null
 
-    fun getCharacterListComponent(): ViewModelApi? {
+    fun getCharacterListComponent(): ViewModelApi {
         return characterListComponent ?: DaggerCharacterListComponent
             .builder()
             .coreAppApi(coreComponent)

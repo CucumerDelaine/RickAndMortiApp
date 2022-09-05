@@ -10,7 +10,7 @@ object AuthComponentManager {
     private var coreDbComponent: CoreDbApi? = null
     private var coreComponent: CoreAppApi? = null
 
-    fun getAuthorizationComponent(): ViewModelApi? {
+    fun getAuthorizationComponent(): ViewModelApi {
         return authorizationComponent ?: DaggerAuthComponent
             .builder()
             .coreAppApi(coreComponent)

@@ -24,7 +24,7 @@ class AuthorizationFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val vm by viewModels<AuthorizationViewModel> {
-        AuthComponentManager.getAuthorizationComponent()!!.viewModelFactory()
+        AuthComponentManager.getAuthorizationComponent().viewModelFactory()
     }
 
     companion object {
@@ -81,7 +81,7 @@ class AuthorizationFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        AuthComponentManager.clearAuthorizationComponent()
+        AuthComponentManager.clearAuthorizationComponent()
         _binding = null
     }
 }

@@ -23,7 +23,7 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val vm by viewModels<CharacterDetailsViewModel> {
-        DetailsComponentManager.getDetailsComponent()!!.viewModelFactory()
+        DetailsComponentManager.getDetailsComponent().viewModelFactory()
     }
 
 
@@ -83,7 +83,7 @@ class DetailsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        DetailsComponentManager.clearDetailsComponent()
+        DetailsComponentManager.clearDetailsComponent()
         _binding = null
     }
 

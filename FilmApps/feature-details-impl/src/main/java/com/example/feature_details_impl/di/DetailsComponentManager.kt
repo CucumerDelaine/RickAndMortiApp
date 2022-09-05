@@ -11,7 +11,7 @@ object DetailsComponentManager {
     private var coreDbComponent: CoreDbApi? = null
     private var coreComponent: CoreAppApi? = null
 
-    fun getDetailsComponent(): ViewModelApi? {
+    fun getDetailsComponent(): ViewModelApi {
         return detailsComponent ?: DaggerDetailsComponent
             .builder()
             .coreAppApi(coreComponent)

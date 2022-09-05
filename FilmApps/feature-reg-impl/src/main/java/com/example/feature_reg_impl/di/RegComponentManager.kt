@@ -10,7 +10,7 @@ object RegComponentManager {
     private var coreDbComponent: CoreDbApi? = null
     private var coreComponent: CoreAppApi? = null
 
-    fun getRegistrationComponent(): ViewModelApi? {
+    fun getRegistrationComponent(): ViewModelApi {
         return registrationComponent  ?: DaggerRegComponent
             .builder()
             .coreAppApi(coreComponent)
