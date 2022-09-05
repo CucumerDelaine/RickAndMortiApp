@@ -6,11 +6,11 @@ import com.example.core_db_api.di.CoreDbApi
 
 object AuthComponentManager {
 
-    private var authorizationComponent: ViewModelApi? = null
+    private var authorizationComponent: AuthComponent? = null
     private var coreDbComponent: CoreDbApi? = null
     private var coreComponent: CoreAppApi? = null
 
-    fun getAuthorizationComponent(): ViewModelApi {
+    fun getAuthorizationComponent(): AuthComponent {
         return authorizationComponent ?: DaggerAuthComponent
             .builder()
             .coreAppApi(coreComponent)

@@ -6,11 +6,11 @@ import com.example.core_db_api.di.CoreDbApi
 
 object RegComponentManager {
 
-    private var registrationComponent: ViewModelApi? = null
+    private var registrationComponent: RegComponent? = null
     private var coreDbComponent: CoreDbApi? = null
     private var coreComponent: CoreAppApi? = null
 
-    fun getRegistrationComponent(): ViewModelApi {
+    fun getRegistrationComponent(): RegComponent {
         return registrationComponent  ?: DaggerRegComponent
             .builder()
             .coreAppApi(coreComponent)

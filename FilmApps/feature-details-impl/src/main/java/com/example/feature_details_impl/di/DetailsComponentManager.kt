@@ -1,17 +1,17 @@
 package com.example.feature_details_impl.di
 
 import com.example.core.di.CoreAppApi
-import com.example.core.viewModel.ViewModelApi
 import com.example.core_db_api.di.CoreDbApi
 import com.example.feature_details_impl.di.component.DaggerDetailsComponent
+import com.example.feature_details_impl.di.component.DetailsComponent
 
 object DetailsComponentManager {
 
-    private var detailsComponent: ViewModelApi? = null
+    private var detailsComponent: DetailsComponent? = null
     private var coreDbComponent: CoreDbApi? = null
     private var coreComponent: CoreAppApi? = null
 
-    fun getDetailsComponent(): ViewModelApi {
+    fun getDetailsComponent(): DetailsComponent {
         return detailsComponent ?: DaggerDetailsComponent
             .builder()
             .coreAppApi(coreComponent)

@@ -12,4 +12,4 @@ import dagger.Component
     dependencies = [CoreDbApi::class, CoreAppApi::class, CoreNetworkApi::class]
 )
 @CharacterListScope
-interface CharacterListComponent : ViewModelApi
+interface CharacterListComponent: ViewModelApi

@@ -11,4 +11,4 @@ import dagger.Component
     dependencies = [CoreDbApi::class, CoreAppApi::class]
 )
 @AuthScope
-interface AuthComponent : ViewModelApi
+interface AuthComponent: ViewModelApi

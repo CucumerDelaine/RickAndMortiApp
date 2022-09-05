@@ -14,4 +14,4 @@ import dagger.Component
     dependencies = [CoreDbApi::class, CoreAppApi::class]
 )
 @DetailsScope
-interface DetailsComponent : ViewModelApi
+interface DetailsComponent: ViewModelApi

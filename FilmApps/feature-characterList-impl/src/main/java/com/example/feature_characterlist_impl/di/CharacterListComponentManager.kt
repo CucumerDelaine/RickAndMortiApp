@@ -7,12 +7,12 @@ import com.example.core_network_api.di.CoreNetworkApi
 
 object CharacterListComponentManager {
 
-    private var characterListComponent: ViewModelApi? = null
+    private var characterListComponent: CharacterListComponent? = null
     private var coreDbComponent: CoreDbApi? = null
     private var coreComponent: CoreAppApi? = null
     private var coreNetworkComponent: CoreNetworkApi? = null
 
-    fun getCharacterListComponent(): ViewModelApi {
+    fun getCharacterListComponent(): CharacterListComponent {
         return characterListComponent ?: DaggerCharacterListComponent
             .builder()
             .coreAppApi(coreComponent)
