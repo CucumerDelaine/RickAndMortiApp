@@ -2,7 +2,7 @@ package com.example.feature_reg_impl.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.feature_auth_api.data.AuthNavigationRepository
+import com.example.core.data.NavigationScreens
 import com.example.feature_reg_api.domain.SaveUserDataUseCase
 import com.example.feature_reg_api.model.RegResult
 import com.example.feature_reg_api.model.UserData
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class SaveUserDataViewModel @Inject constructor(
     private val saveUserDataUseCase: SaveUserDataUseCase,
     private val router: Router,
-    private val authNavigateRepo: AuthNavigationRepository
+    private val screens: NavigationScreens
 ) : ViewModel() {
 
     private val _mutableState: MutableStateFlow<RegResultUI> = MutableStateFlow(
@@ -26,7 +26,7 @@ class SaveUserDataViewModel @Inject constructor(
     val mutableState: StateFlow<RegResultUI> = _mutableState
 
     fun goToAuth() {
-        router.backTo(authNavigateRepo.getNewInstance())
+        router.backTo(screens.authorizationScreen())
     }
 
     fun registration(login: String, pass: String) {

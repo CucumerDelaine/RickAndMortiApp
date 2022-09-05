@@ -2,7 +2,7 @@ package com.example.feature_details_impl.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.feature_characterlist_api.data.repository.CharacterListNavigationRepository
+import com.example.core.data.NavigationScreens
 import com.example.feature_details_api.model.CharacterDetailsResponse
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ class CharacterDetailsViewModel @Inject constructor(
     private val getCharacterDetailsUseCase: com.example.feature_details_api.domain.GetCharacterDetailsUseCase,
     private val characterConverter: com.example.feature_details_api.model.ResultCharacterResponseModel,
     private val router: Router,
-    private val characterListNavigationRepository: CharacterListNavigationRepository
+    private val screens: NavigationScreens
 ) : ViewModel() {
 
     private val _mutableState: MutableStateFlow<com.example.feature_details_impl.presentation.model.CharacterDetailsResult> =
@@ -24,7 +24,7 @@ class CharacterDetailsViewModel @Inject constructor(
         _mutableState
 
     fun backToCharLIst() {
-        router.backTo(characterListNavigationRepository.getNewInstance())
+        router.backTo(screens.listFilmScreen())
     }
 
 

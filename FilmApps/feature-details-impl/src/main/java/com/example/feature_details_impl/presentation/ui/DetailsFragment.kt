@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.example.core.data.model.CoreCharacter
 import com.example.core_db_api.model.Character
 import com.example.feature_details_impl.databinding.FragmentDetailsBinding
 import com.example.feature_details_impl.di.DetailsComponentManager
@@ -87,7 +88,17 @@ class DetailsFragment : Fragment() {
     }
 
     companion object {
-        fun getNewInstance(character: Character): DetailsFragment {
+        fun getNewInstance(coreCharacter: CoreCharacter): DetailsFragment {
+            val character = Character(
+                coreCharacter.id,
+                coreCharacter.name,
+                coreCharacter.status,
+                coreCharacter.species,
+                coreCharacter.gender,
+                coreCharacter.origin,
+                coreCharacter.location,
+                coreCharacter.image
+            )
             return DetailsFragment().apply {
                 arguments = Bundle().apply {
                     character.id?.let { putInt("ID", it) }
@@ -95,5 +106,4 @@ class DetailsFragment : Fragment() {
             }
         }
     }
-
 }

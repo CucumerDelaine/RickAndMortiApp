@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.filmapps.ComponentManager
 import com.example.filmapps.R
-import com.example.filmapps.Screens
+import com.example.filmapps.ScreensImpl
 import com.example.filmapps.databinding.ActivityMainBinding
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         ComponentManager.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)
-            router.newRootScreen(Screens.authorizationScreen())
+            router.newRootScreen(ScreensImpl.authorizationScreen())
         binding = ActivityMainBinding.inflate(layoutInflater)
             .also { layout -> setContentView(layout.root) }
     }

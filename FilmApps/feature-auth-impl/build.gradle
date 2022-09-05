@@ -53,7 +53,6 @@ dependencies {
     implementation project(':core')
     implementation project(':feature-auth-api')
     implementation project(':core-db-api')
-    implementation project(':core-db-impl')
     implementation project(':feature-characterList-api')
     implementation project(':feature-reg-api')
 

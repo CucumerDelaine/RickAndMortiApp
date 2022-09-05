@@ -1,35 +1,36 @@
 package com.example.feature_characterlist_impl.di
 
+import com.example.core.di.CoreAppApi
 import com.example.core.viewModel.ViewModelApi
-import com.example.feature_characterlist_api.di.CharListApi
+import com.example.core_db_api.di.CoreDbApi
+import com.example.core_network_api.di.CoreNetworkApi
 
 object CharacterListComponentManager {
 
     private var characterListComponent: ViewModelApi? = null
+    private var coreDbComponent: CoreDbApi? = null
+    private var coreComponent: CoreAppApi? = null
+    private var coreNetworkComponent: CoreNetworkApi? = null
 
     fun getCharacterListComponent(): ViewModelApi? {
-        return characterListComponent
-//        return characterListComponent ?: DaggerCharacterListComponent
-//            .builder()
-//            .coreAppApi(CoreComponentManager.coreComponent)
-//            .coreDbApi(CoreDbComponentManager.getCoreDbComponent())
-//            .coreNetworkApi(CoreNetworkComponentManager.getNetworkComponent())
-//            .detailsApi(DetailsComponentManager.getDetailsNavigationComponent())
-//            .build()
-//            .also { characterListComponent = it }
-    }
-
-    fun setCharacterListComponent(charComponent: ViewModelApi) {
-        characterListComponent = charComponent
-    }
-
-    private var charListNavComponent: CharListApi? = null
-
-    fun getCharListNavigationComponent(): CharListApi {
-        return charListNavComponent ?: DaggerCharacterListNavigationComponent
+        return characterListComponent ?: DaggerCharacterListComponent
             .builder()
+            .coreAppApi(coreComponent)
+            .coreDbApi(coreDbComponent)
+            .coreNetworkApi(coreNetworkComponent)
             .build()
-            .also { charListNavComponent = it }
+            .also { characterListComponent = it }
+    }
+
+    fun setCoreDbComponent(impl: CoreDbApi) {
+        coreDbComponent = impl
+    }
+
+    fun setCoreComponent(impl: CoreAppApi) {
+        coreComponent = impl
+    }
+    fun setCoreNetworkComponent(impl: CoreNetworkApi) {
+        coreNetworkComponent = impl
     }
 
     fun clearCharacterListComponent() {

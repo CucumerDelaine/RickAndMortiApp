@@ -7,7 +7,7 @@ import javax.inject.Inject
 class CharacterConverterImpl @Inject constructor() :
     com.example.feature_characterlist_api.data.model.CharacterConverter {
     override fun convert(values: MutableList<NetworkCharacter>): MutableList<Character> {
-        val list: MutableList<Character> = ArrayList()
+        val list = mutableListOf<Character>()
         for (it in values) {
             list.add(
                 Character(

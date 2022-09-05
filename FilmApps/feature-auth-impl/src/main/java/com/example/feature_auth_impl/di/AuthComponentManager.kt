@@ -1,35 +1,30 @@
 package com.example.feature_auth_impl.di
 
+import com.example.core.di.CoreAppApi
 import com.example.core.viewModel.ViewModelApi
-import com.example.feature_auth_api.di.AuthNavigationApi
+import com.example.core_db_api.di.CoreDbApi
 
 object AuthComponentManager {
 
     private var authorizationComponent: ViewModelApi? = null
+    private var coreDbComponent: CoreDbApi? = null
+    private var coreComponent: CoreAppApi? = null
 
     fun getAuthorizationComponent(): ViewModelApi? {
-        return authorizationComponent
-//        return authorizationComponent ?: DaggerAuthComponent
-//            .builder()
-//            .coreAppApi(CoreComponentManager.coreComponent)
-//            .coreDbApi(CoreDbComponentManager.getCoreDbComponent())
-//            .charListApi(CharacterListComponentManager.getCharListNavigationComponent())
-//            .regApi(RegComponentManager.getRegNavigationComponent())
-//            .build()
-//            .also { authorizationComponent = it }
-    }
-
-    fun setAuthComponent(authComponent: ViewModelApi) {
-        authorizationComponent = authComponent
-    }
-
-    private var authNavComponent: AuthNavigationApi? = null
-
-    fun getAuthNavigationComponent(): AuthNavigationApi {
-        return authNavComponent ?: DaggerAuthNavComponent
+        return authorizationComponent ?: DaggerAuthComponent
             .builder()
+            .coreAppApi(coreComponent)
+            .coreDbApi(coreDbComponent)
             .build()
-            .also { authNavComponent = it }
+            .also { authorizationComponent = it }
+    }
+
+    fun setCoreDbComponent(impl: CoreDbApi) {
+        coreDbComponent = impl
+    }
+
+    fun setCoreComponent(impl: CoreAppApi) {
+        coreComponent = impl
     }
 
     fun clearAuthorizationComponent() {

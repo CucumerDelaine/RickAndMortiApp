@@ -1,34 +1,31 @@
 package com.example.feature_details_impl.di
 
+import com.example.core.di.CoreAppApi
 import com.example.core.viewModel.ViewModelApi
-import com.example.feature_details_api.di.DetailsApi
-import com.example.feature_details_impl.di.component.DaggerDetailsNavComponent
+import com.example.core_db_api.di.CoreDbApi
+import com.example.feature_details_impl.di.component.DaggerDetailsComponent
 
 object DetailsComponentManager {
 
     private var detailsComponent: ViewModelApi? = null
+    private var coreDbComponent: CoreDbApi? = null
+    private var coreComponent: CoreAppApi? = null
 
     fun getDetailsComponent(): ViewModelApi? {
-        return detailsComponent
-//        return detailsComponent  ?: DaggerDetailsComponent
-//            .builder()
-//            .coreAppApi(CoreComponentManager.coreComponent)
-//            .coreDbApi(CoreDbComponentManager.getCoreDbComponent())
-//            .build()
-//            .also { detailsComponent = it }
-    }
-
-    fun setDetailsComponent(detailComponent: ViewModelApi) {
-        detailsComponent = detailComponent
-    }
-
-    private var detailsNavComponent: DetailsApi? = null
-
-    fun getDetailsNavigationComponent(): DetailsApi {
-        return detailsNavComponent ?: DaggerDetailsNavComponent
+        return detailsComponent ?: DaggerDetailsComponent
             .builder()
+            .coreAppApi(coreComponent)
+            .coreDbApi(coreDbComponent)
             .build()
-            .also { detailsNavComponent = it }
+            .also { detailsComponent = it }
+    }
+
+    fun setCoreDbComponent(impl: CoreDbApi) {
+        coreDbComponent = impl
+    }
+
+    fun setCoreComponent(impl: CoreAppApi) {
+        coreComponent = impl
     }
 
     fun clearDetailsComponent() {

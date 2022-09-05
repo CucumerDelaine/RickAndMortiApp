@@ -2,13 +2,14 @@ package com.example.feature_characterlist_impl.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.core.data.NavigationScreens
+import com.example.core.data.model.CoreCharacter
 import com.example.core_db_api.model.Character
 import com.example.feature_characterlist_api.domain.ClearDatabaseUseCase
 import com.example.feature_characterlist_api.domain.GetAndSaveCharacterListUseCase
 import com.example.feature_characterlist_api.model.ClearDatabaseResult
 import com.example.feature_characterlist_api.model.GetCharacterListResponse
 import com.example.feature_characterlist_impl.presentation.model.CharacterListResult
-import com.example.feature_details_api.data.DetailsNavigationRepository
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,7 +24,7 @@ class CharacterListViewModel @Inject constructor(
     private val getAndSaveCharacterListUseCase: GetAndSaveCharacterListUseCase,
     private val clearDatabaseUseCase: ClearDatabaseUseCase,
     private val router: Router,
-    private val detailsNavRepository: DetailsNavigationRepository
+    private val screens: NavigationScreens
 ) : ViewModel() {
 
 
@@ -37,7 +38,17 @@ class CharacterListViewModel @Inject constructor(
     }
 
     fun goToDetails(character: Character) {
-        router.navigateTo(detailsNavRepository.getNewInstance(character))
+        val coreCharacter = CoreCharacter(
+            character.id,
+            character.name,
+            character.status,
+            character.species,
+            character.gender,
+            character.origin,
+            character.location,
+            character.image
+        )
+        router.navigateTo(screens.details(coreCharacter))
     }
 
     private suspend fun clearDatabase(): ClearDatabaseResult {
