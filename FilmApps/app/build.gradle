@@ -54,10 +54,11 @@ dependencies {
     //Cicerone
     implementation("com.github.terrakok:cicerone:7.1")
 
-    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
 
-    def room_version = "2.4.2"
+    def room_version = "2.4.3"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
@@ -66,14 +67,17 @@ dependencies {
     implementation "io.coil-kt:coil:2.1.0"
 
 
-    def okHttp_version = '4.10.0'
-    def retrofit_version = '2.9.0'
-    implementation "com.squareup.okhttp3:okhttp:$okHttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-
-
-
+    implementation project(':core-db-api')
+    implementation project(':core-db-impl')
+    implementation project(':core-network-api')
+    implementation project(':core-network-impl')
+    implementation project(':core')
+    implementation project(':feature-auth-api')
+    implementation project(':feature-auth-impl')
+    implementation project(':feature-reg-api')
+    implementation project(':feature-reg-impl')
+    implementation project(':feature-characterList-api')
+    implementation project(':feature-characterList-impl')
+    implementation project(':feature-details-api')
+    implementation project(':feature-details-impl')
 }

@@ -12,6 +12,19 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core-db-api" />
+            <option value="$PROJECT_DIR$/core-db-impl" />
+            <option value="$PROJECT_DIR$/core-network-api" />
+            <option value="$PROJECT_DIR$/core-network-impl" />
+            <option value="$PROJECT_DIR$/feature-auth-api" />
+            <option value="$PROJECT_DIR$/feature-auth-impl" />
+            <option value="$PROJECT_DIR$/feature-characterList-api" />
+            <option value="$PROJECT_DIR$/feature-characterList-impl" />
+            <option value="$PROJECT_DIR$/feature-details-api" />
+            <option value="$PROJECT_DIR$/feature-details-impl" />
+            <option value="$PROJECT_DIR$/feature-reg-api" />
+            <option value="$PROJECT_DIR$/feature-reg-impl" />
           </set>
         </option>
       </GradleProjectSettings>
