@@ -9,20 +9,6 @@ class CoreNetworkRepositoryImpl @Inject constructor(
 ) : CoreNetworkRepository {
     override suspend fun getCharacterListNetwork(page: Int): MutableList<NetworkCharacter> {
         val result = retrofit.getPage(page).results
-//        for (it in result) {
-//            list.add(
-//                NetworkCharacter(
-//                    id = it.id,
-//                    name = it.name,
-//                    status = it.status,
-//                    species = it.species,
-//                    gender = it.gender,
-//                    origin = it.origin?.name,
-//                    location = it.location?.name,
-//                    image = it.image
-//                )
-//            )
-//        }
         var list = result.map { NetworkCharacter(
             id = it.id,
             name = it.name,

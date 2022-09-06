@@ -7,11 +7,11 @@ object CoreComponentManager {
 
     lateinit var coreComponent: CoreAppApi
 
-    fun getCore(context: Context, impl: NavigationScreens) {
+    fun getCore(context: Context, navigationScreens: NavigationScreens) {
         coreComponent = DaggerCoreComponent
             .builder()
             .contextModule(ContextModule(context))
-            .navigationScreens(impl)
+            .navigationScreens(navigationScreens)
             .build()
     }
 }
