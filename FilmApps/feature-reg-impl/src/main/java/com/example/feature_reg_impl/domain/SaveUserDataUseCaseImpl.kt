@@ -16,7 +16,12 @@ class SaveUserDataUseCaseImpl @Inject constructor(
             RegResult.EmptyError
         else {
             withContext(Dispatchers.IO) {
-                regRepository.save(userParam = param)
+                try {
+                    regRepository.save(userParam = param)
+                    RegResult.Success
+                } catch (e: Exception) {
+                    RegResult.Error(e)
+                }
             }
         }
     }

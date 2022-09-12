@@ -10,12 +10,7 @@ import javax.inject.Inject
 class RegRepositoryImpl @Inject constructor(
     private val userDataRepository: UserDataRepository
 ) : RegRepository {
-    override fun save(userParam: UserData): RegResult {
-        return try {
-            userDataRepository.save(User(userParam.login, userParam.pass))
-            RegResult.Success
-        } catch (e: Exception) {
-            RegResult.Error(e)
-        }
+    override fun save(userParam: UserData) {
+        userDataRepository.save(User(userParam.login, userParam.pass))
     }
 }

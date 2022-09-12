@@ -6,7 +6,7 @@ import com.example.feature_characterlist_api.model.GetCharacterListResponse
 import com.example.feature_characterlist_api.model.SaveCharacterListResult
 
 interface CacheRepository {
-    suspend fun saveCharacterList(characterList: List<Character>?): SaveCharacterListResult
-    suspend fun getCharacterList(): GetCharacterListResponse
-    suspend fun clearDatabase(): ClearDatabaseResult
+    suspend fun saveCharacterList(characterList: List<Character>?)
+    suspend fun getCharacterList(): List<Character?>
+    suspend fun clearDatabase()
 }

@@ -13,21 +13,15 @@ class GetAndSaveCharacterListUseCaseImpl @Inject constructor(
     private val networkRepository: NetworkRepository
 ) : GetAndSaveCharacterListUseCase {
     override suspend fun execute(page: Int, ignoreCache: Boolean): GetCharacterListResponse {
-        if (ignoreCache) {
-            return when (val loadResult = networkRepository.getCharacterListNetwork(page)) {
-                is GetCharacterListNetworkResponse.Success -> {
-                    when (val saveResult = cacheRepository.saveCharacterList(loadResult.value)) {
-                        is SaveCharacterListResult.Success -> cacheRepository.getCharacterList()
-                        is SaveCharacterListResult.Error -> GetCharacterListResponse.Error(
-                            saveResult.message
-                        )
-                    }
-                }
-                is GetCharacterListNetworkResponse.Error -> GetCharacterListResponse.Error(
-                    loadResult.message
-                )
-            }
+        return try {
+            if (ignoreCache) {
+                val loadResult = networkRepository.getCharacterListNetwork(page)
+                cacheRepository.saveCharacterList(loadResult)
+                GetCharacterListResponse.Success(cacheRepository.getCharacterList())
+            } else
+                GetCharacterListResponse.Success(cacheRepository.getCharacterList())
+        } catch (e: Exception) {
+            GetCharacterListResponse.Error(e)
         }
-        return cacheRepository.getCharacterList()
     }
 }

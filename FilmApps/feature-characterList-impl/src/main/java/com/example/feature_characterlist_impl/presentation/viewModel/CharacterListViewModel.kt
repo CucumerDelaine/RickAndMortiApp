@@ -33,10 +33,6 @@ class CharacterListViewModel @Inject constructor(
     val mutableState: StateFlow<CharacterListResult> = _mutableState
     private var page = 0
 
-    init {
-        timer()
-    }
-
     fun goToDetails(character: Character) {
         val coreCharacter = CoreCharacter(
             character.id,
@@ -56,6 +52,29 @@ class CharacterListViewModel @Inject constructor(
         return clearDatabaseUseCase.execute()
     }
 
+//    fun getCharacterList(ignoreCache: Boolean) {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            if (ignoreCache) {
+//                clearDatabase()
+//            }
+//            loadCharacterList(ignoreCache)
+//        }
+//    }
+
+
+    /**
+     * todo ignoreCache и clearCache очень похоже по функционалу, поэтому лучше упростить
+     *
+     *  fun getCharacterList(clearCache: Boolean) {
+     *    viewModelScope.launch(Dispatchers.IO) {
+     *       if (ignoreCache) {
+     *          clearDatabase()
+     *       }
+     *       loadCharacterList(ignoreCache)
+     *    }
+     *  }
+     *
+     */
     fun getCharacterList(ignoreCache: Boolean, clearCache: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             if (clearCache) {
@@ -90,12 +109,5 @@ class CharacterListViewModel @Inject constructor(
                 )
             }
         }
-    }
-
-    private fun timer() {
-        val service: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
-        service.scheduleWithFixedDelay(Runnable {
-            getCharacterList(ignoreCache = true, clearCache = true)
-        }, 0, 1, TimeUnit.MINUTES)
     }
 }

@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     private val navigator = AppNavigator(this, R.id.layoutCont)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        ComponentManager.init(context = applicationContext)
         ComponentManager.appComponent.inject(this)
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null)

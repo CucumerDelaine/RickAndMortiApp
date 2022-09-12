@@ -9,6 +9,11 @@ class ClearDatabaseUseCaseImpl @Inject constructor(
     private val cacheRepository: CacheRepository
 ) : ClearDatabaseUseCase {
     override suspend fun execute(): ClearDatabaseResult {
-        return cacheRepository.clearDatabase()
+        return try {
+            cacheRepository.clearDatabase()
+            ClearDatabaseResult.Success
+        } catch (e: Exception) {
+            ClearDatabaseResult.Error(e)
+        }
     }
 }
