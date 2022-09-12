@@ -16,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.example.core_db_api.model.Character
 import com.example.feature_characterlist_impl.databinding.FragmentCharacterListListBinding
 import com.example.feature_characterlist_impl.di.CharacterListComponentManager
+import com.example.feature_characterlist_impl.presentation.model.CharacterListResult
 import com.example.feature_characterlist_impl.presentation.viewModel.CharacterListViewModel
 
 class CharacterListFragment : Fragment() {
@@ -64,18 +65,18 @@ class CharacterListFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             vm.mutableState.collect {
                 when (it) {
-                    is com.example.feature_characterlist_impl.presentation.model.CharacterListResult.Success -> {
+                    is CharacterListResult.Success -> {
                         adapter.setData(it.value)
                         swipeRefresh.isRefreshing = false
                         progressBar.visibility = ProgressBar.INVISIBLE
                     }
-                    is com.example.feature_characterlist_impl.presentation.model.CharacterListResult.Error -> Log.d(
+                    is CharacterListResult.Error -> Log.d(
                         TAG,
                         it.message.toString()
                     )
-                    is com.example.feature_characterlist_impl.presentation.model.CharacterListResult.Loading -> progressBar.visibility =
+                    is CharacterListResult.Loading -> progressBar.visibility =
                         ProgressBar.VISIBLE
-                    is com.example.feature_characterlist_impl.presentation.model.CharacterListResult.Finally -> {
+                    is CharacterListResult.Finally -> {
                         status = false
                         progressBar.visibility = ProgressBar.INVISIBLE
                     }
@@ -83,9 +84,9 @@ class CharacterListFragment : Fragment() {
             }
         }
         recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
-        swipeRefresh.setOnRefreshListener(OnRefreshListener {
+        swipeRefresh.setOnRefreshListener {
             vm.getCharacterList(ignoreCache = true, clearCache = true)
-        })
+        }
         vm.getCharacterList(ignoreCache = true, clearCache = false)
     }
 

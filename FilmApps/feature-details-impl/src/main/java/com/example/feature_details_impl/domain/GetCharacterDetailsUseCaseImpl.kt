@@ -9,6 +9,10 @@ class GetCharacterDetailsUseCaseImpl @Inject constructor(
     private val getCharacterRepository: GetCharacterRepository
 ) : GetCharacterDetailsUseCase {
     override suspend fun execute(id: Int): CharacterDetailsResponse {
-        return getCharacterRepository.getCharacter(id)
+        return try {
+            CharacterDetailsResponse.Success(getCharacterRepository.getCharacter(id))
+        } catch (e: Exception) {
+            CharacterDetailsResponse.Error(e)
+        }
     }
 }
