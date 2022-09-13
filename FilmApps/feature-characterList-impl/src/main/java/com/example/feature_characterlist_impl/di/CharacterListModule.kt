@@ -2,8 +2,21 @@ package com.example.feature_characterlist_impl.di
 
 import androidx.lifecycle.ViewModel
 import com.example.core.viewModel.ViewModelKey
+import com.example.feature_characterlist_api.data.model.CharacterConverter
+import com.example.feature_characterlist_api.data.repository.CacheRepository
+import com.example.feature_characterlist_api.data.repository.NetworkRepository
+import com.example.feature_characterlist_api.data.repository.TimeAndPageInfoRepository
+import com.example.feature_characterlist_api.domain.ClearDatabaseUseCase
+import com.example.feature_characterlist_api.domain.GetAndSaveCharacterListUseCase
+import com.example.feature_characterlist_api.domain.GetAppInfoUseCase
+import com.example.feature_characterlist_api.domain.SaveAppInfoUseCase
+import com.example.feature_characterlist_impl.data.repository.CacheRepositoryImpl
+import com.example.feature_characterlist_impl.data.repository.NetworkRepositoryImpl
+import com.example.feature_characterlist_impl.data.repository.TimeAndPageInfoRepositoryImpl
 import com.example.feature_characterlist_impl.domain.ClearDatabaseUseCaseImpl
 import com.example.feature_characterlist_impl.domain.GetAndSaveCharacterListUseCaseImpl
+import com.example.feature_characterlist_impl.domain.GetAppInfoUseCaseImpl
+import com.example.feature_characterlist_impl.domain.SaveAppInfoUseCaseImpl
 import com.example.feature_characterlist_impl.presentation.viewModel.CharacterListViewModel
 import dagger.Binds
 import dagger.Module
@@ -15,19 +28,31 @@ internal interface CharacterListModule {
 
     @Binds
     @CharacterListScope
-    fun provideCacheRepository(cacheRepository: com.example.feature_characterlist_impl.data.repository.CacheRepositoryImpl): com.example.feature_characterlist_api.data.repository.CacheRepository
+    fun provideCacheRepository(cacheRepository: CacheRepositoryImpl): CacheRepository
 
     @Binds
     @CharacterListScope
-    fun provideNetworkRepository(networkRepository: com.example.feature_characterlist_impl.data.repository.NetworkRepositoryImpl): com.example.feature_characterlist_api.data.repository.NetworkRepository
+    fun provideNetworkRepository(networkRepository: NetworkRepositoryImpl): NetworkRepository
 
     @Binds
     @CharacterListScope
-    fun provideClearDatabaseUseCase(clearDatabaseUseCase: ClearDatabaseUseCaseImpl): com.example.feature_characterlist_api.domain.ClearDatabaseUseCase
+    fun provideTimeAndPageInfoRepository(timeAndPageInfoRepository: TimeAndPageInfoRepositoryImpl): TimeAndPageInfoRepository
 
     @Binds
     @CharacterListScope
-    fun provideLoadCharacterListUseCase(loadCharacterListUseCase: GetAndSaveCharacterListUseCaseImpl): com.example.feature_characterlist_api.domain.GetAndSaveCharacterListUseCase
+    fun provideClearDatabaseUseCase(clearDatabaseUseCase: ClearDatabaseUseCaseImpl): ClearDatabaseUseCase
+
+    @Binds
+    @CharacterListScope
+    fun provideLoadCharacterListUseCase(loadCharacterListUseCase: GetAndSaveCharacterListUseCaseImpl): GetAndSaveCharacterListUseCase
+
+    @Binds
+    @CharacterListScope
+    fun provideGetAppInfoUseCase(getAppInfoUseCase: GetAppInfoUseCaseImpl): GetAppInfoUseCase
+
+    @Binds
+    @CharacterListScope
+    fun provideSaveAppInfoUseCase(saveAppInfoUseCase: SaveAppInfoUseCaseImpl): SaveAppInfoUseCase
 
     @Binds
     @IntoMap
@@ -36,6 +61,6 @@ internal interface CharacterListModule {
 
     @Binds
     @CharacterListScope
-    fun provideCharacterListModel(characterListModel: com.example.feature_characterlist_impl.data.model.CharacterConverterImpl): com.example.feature_characterlist_api.data.model.CharacterConverter
+    fun provideCharacterListModel(characterListModel: com.example.feature_characterlist_impl.data.model.CharacterConverterImpl): CharacterConverter
 
 }

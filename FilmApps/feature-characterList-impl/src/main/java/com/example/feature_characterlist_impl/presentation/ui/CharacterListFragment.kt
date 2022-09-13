@@ -85,15 +85,14 @@ class CharacterListFragment : Fragment() {
         }
         recyclerView.addOnScrollListener(PaginationScrollListener(vm, status, progressBar))
         swipeRefresh.setOnRefreshListener {
-            vm.getCharacterList(ignoreCache = true, clearCache = true)
+            vm.getCharacterList(firstStart = false, clearCache = true, pagination = false)
         }
-        vm.getCharacterList(ignoreCache = true, clearCache = false)
+        vm.getCharacterList(firstStart = true, clearCache = false, pagination = false)
     }
 
 
     override fun onDestroyView() {
         super.onDestroyView()
-        CharacterListComponentManager.clearCharacterListComponent()
         _binding = null
     }
 }

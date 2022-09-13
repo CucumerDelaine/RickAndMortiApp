@@ -11,7 +11,10 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val userDataRepository: UserDataRepository
 ) : AuthRepository {
-    override fun isUserRegistered(userParam: UserData){
-            userDataRepository.getUserData(login = userParam.login, pass = userParam.pass)
+    override fun isUserRegistered(userParam: UserData): Boolean {
+        val it = userDataRepository.getUserData(login = userParam.login, pass = userParam.pass)
+        if(it == null)
+            return false
+        return true
     }
 }
