@@ -17,10 +17,11 @@ class GetInfoAboutRegisterUseCaseImpl @Inject constructor(
         else {
             withContext(Dispatchers.IO) {
                 try {
-                    authRepository.isUserRegistered(userParam = param)
-                    AuthResult.Success
-                }
-                catch (e: Exception) {
+                    if (!authRepository.isUserRegistered(userParam = param))
+                        AuthResult.ErrorLogin
+                    else
+                        AuthResult.Success
+                } catch (e: Exception) {
                     AuthResult.Error(e)
                 }
             }

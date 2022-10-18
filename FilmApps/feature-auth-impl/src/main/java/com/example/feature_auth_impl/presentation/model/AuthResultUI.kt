@@ -5,4 +5,5 @@ sealed interface AuthResultUI {
     class Error(val message: Exception) : AuthResultUI
     object Loading : AuthResultUI
     object EmptyError : AuthResultUI
+    object ErrorLogin : AuthResultUI
 }

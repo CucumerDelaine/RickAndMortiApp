@@ -41,16 +41,14 @@ class AuthorizationFragment : Fragment() {
                         activity,
                         context?.getString(R.string.welcome), Toast.LENGTH_SHORT
                     ).show()
-                    is AuthResultUI.Error -> {
-                        Toast.makeText(
-                            activity,
-                            context?.getString(R.string.badAuth), Toast.LENGTH_SHORT
-                        ).show()
-                        Log.e(TAG, it.message.toString())
-                    }
+                    is AuthResultUI.Error -> Log.e(TAG, it.message.toString())
                     is AuthResultUI.EmptyError -> Toast.makeText(
                         activity,
                         context?.getString(R.string.emptyLine), Toast.LENGTH_SHORT
+                    ).show()
+                    is AuthResultUI.ErrorLogin -> Toast.makeText(
+                        activity,
+                        context?.getString(R.string.badAuth), Toast.LENGTH_SHORT
                     ).show()
                     else -> {}
                 }

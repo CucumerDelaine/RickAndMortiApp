@@ -16,7 +16,7 @@ import javax.inject.Inject
 internal class AuthorizationViewModel @Inject constructor(
     private val getInfoAboutRegisterUseCase: GetInfoAboutRegisterUseCase,
     private val router: Router,
-private var screens: NavigationScreens
+    private var screens: NavigationScreens
 ) : ViewModel() {
 
 
@@ -47,6 +47,7 @@ private var screens: NavigationScreens
                 }
                 is AuthResult.Error -> _mutableState.emit(AuthResultUI.Error(it.message))
                 is AuthResult.EmptyError -> _mutableState.emit(AuthResultUI.EmptyError)
+                is AuthResult.ErrorLogin -> _mutableState.emit(AuthResultUI.ErrorLogin)
             }
         }
     }
